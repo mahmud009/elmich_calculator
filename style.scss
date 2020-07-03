@@ -151,13 +151,10 @@ html {
   }
 }
 
-.col-12,
-.section-column-right,
-.col-md-6,
 .section-column {
   @include tablet {
-    padding-right: 0 !important;
-    padding-left: 0 !important;
+    padding-right: 30px !important;
+    padding-left: 30px !important;
   }
 }
 
