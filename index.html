@@ -35,7 +35,7 @@
                         <h3>Select type of finish</h3>
                     </div>
                     <div class="section-content">
-                        <div class="col-6 section-column">
+                        <div class="col-12 col-md-6 section-column">
                             <div class="root-selector-wrap">
                                 <div class="root-selector-img-wrap">
                                     <img src="assets/img/Paving_Setup.png" alt="">
@@ -44,9 +44,8 @@
                                     <h2>Tiling</h2>
                                 </div>
                             </div>
-
                         </div>
-                        <div class="col-6 section-column">
+                        <div class="col-12 col-md-6 section-column">
 
                             <div class="root-selector-wrap">
                                 <div class="root-selector-img-wrap">
@@ -64,12 +63,12 @@
 
                 </div>
 
-                <div class="section" id="section-2">
+                <div class="section" id="section-2A">
                     <div class="section-title">
                         <h3>Input site values</h3>
                     </div>
                     <div class="section-content">
-                        <div class="col-6 section-column">
+                        <div class="col-12 col-md-6 section-column section-column-left">
 
                             <div class="input-wrapper">
 
@@ -82,19 +81,21 @@
                                         <div class="single-input">
                                             <div class="single-input-label-wrap">
                                                 <label for="site-length-A">Length</label>
+                                                <span class="input-label-semicolon">:</span>
                                             </div>
                                             <div class="single-input-field-wrap">
                                                 <input type="number" name="site-length-A" id="site-length-A">
-                                                <a class="input-unit">mm</a>
+                                                <a class="input-unit"><span>mm</span></a>
                                             </div>
                                         </div>
                                         <div class="single-input">
                                             <div class="single-input-label-wrap">
                                                 <label for="site-breadth-A">Breadth</label>
+                                                <span class="input-label-semicolon">:</span>
                                             </div>
                                             <div class="single-input-field-wrap">
                                                 <input type="number" name="site-breadth-A" id="site-breadth-A">
-                                                <a class="input-unit">mm</a>
+                                                <a class="input-unit"><span>mm</span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -110,19 +111,21 @@
                                         <div class="single-input">
                                             <div class="single-input-label-wrap">
                                                 <label for="tile-length-A">Length</label>
+                                                <span class="input-label-semicolon">:</span>
                                             </div>
                                             <div class="single-input-field-wrap">
                                                 <input type="number" name="tile-length-A" id="tile-length-A">
-                                                <a class="input-unit">mm</a>
+                                                <a class="input-unit"><span>mm</span></a>
                                             </div>
                                         </div>
                                         <div class="single-input">
                                             <div class="single-input-label-wrap">
                                                 <label for="tile-breadth-A">Breadth</label>
+                                                <span class="input-label-semicolon">:</span>
                                             </div>
                                             <div class="single-input-field-wrap">
                                                 <input type="number" name="tile-breadth-A" id="tile-breadth-A">
-                                                <a class="input-unit">mm</a>
+                                                <a class="input-unit"><span>mm</span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -139,11 +142,11 @@
                                     <div class="input-group">
                                         <div class="single-input">
 
-                                            <div class="single-input-field-wrap">
+                                            <div class="single-input-field-wrap pedstal-config-wrap">
                                                 <select name="pedestal-config-A" id="pedestal-config-A">
-                                                    <option value="1">Corners Only</option>
-                                                    <option value="2" selected>Corners & Center</option>
-                                                    <option value="3">Corners, Center & Edges</option>
+                                                    <option value="CornersOnly">Corners Only</option>
+                                                    <option value="CornersCentre" selected>Corners & Center</option>
+                                                    <option value="CornersCentreEdges">Corners, Center & Edges</option>
                                                 </select>
                                             </div>
 
@@ -158,36 +161,441 @@
                             </div>
 
 
+
+
                         </div>
-                        <div class="col-6 section-column">
 
 
+                        <div class="col-12 col-md-6 section-column section-column-right">
+
+                            <div class="input-wrapper">
+
+                                <div class="input-group-wrap">
+
+                                    <div class="input-group-title">
+                                        <h5>Calculations</h5>
+                                    </div>
+                                    <div class="input-group">
+                                        <div class="single-input">
+                                            <div class="single-input-label-wrap">
+                                                <label for="calculation-area-A">Area</label>
+                                                <span class="input-label-semicolon">:</span>
+                                            </div>
+                                            <div class="single-input-field-wrap">
+                                                <input readonly class="only-bottom-border" type="number"
+                                                    name="calculation-area-A" id="calculation-area-A">
+                                                <a class="input-unit"><span>m<sup>2</sup></span></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-input">
+                                            <div class="single-input-label-wrap">
+                                                <label for="calculation-pedestals-A">Pedestals</label>
+                                                <span class="input-label-semicolon">:</span>
+                                            </div>
+                                            <div class="single-input-field-wrap">
+                                                <input readonly class="only-bottom-border" type="number"
+                                                    name="calculation-pedestals-A" id="calculation-pedestals-A">
+                                                <a class="input-unit"><span>no.</span></a>
+                                            </div>
+                                        </div>
+
+                                        <div class="single-input">
+                                            <div class="single-input-label-wrap">
+                                                <label for="calculation-pavers-A">Pavers</label>
+                                                <span class="input-label-semicolon">:</span>
+                                            </div>
+                                            <div class="single-input-field-wrap">
+                                                <input readonly class="only-bottom-border" type="number"
+                                                    name="calculation-pavers-A" id="calculation-pavers-A">
+                                                <a class="input-unit"><span>no.</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="image-section" id="img-section-2A">
+
+                                <div class="image-wrap">
+                                    <img id="CornersCentre" src="assets/img/CornersCentre.png" alt="CornersCentre">
+                                    <img id="CornersOnly" src="assets/img/CornersOnly.png" alt="CornersOnly">
+                                    <img id="CornersCentreEdges" src="assets/img/CornersCentreEdges.png"
+                                        alt="CornersCentre">
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="section" id="section-2B">
+
+                        <div class="section-title">
+                            <h3>Input site values</h3>
+                        </div>
+                        <div class="section-content">
+                            <div class="col-12 col-md-6 section-column section-column-left">
+
+                                <div class="input-wrapper">
+
+                                    <div class="input-group-wrap">
+
+                                        <div class="input-group-title">
+                                            <h5>Site dimensions</h5>
+                                        </div>
+                                        <div class="input-group">
+                                            <div class="single-input">
+                                                <div class="single-input-label-wrap">
+                                                    <label for="site-length-B"><span>Length</span><span
+                                                            class="sub-label">(along joist)</span></label>
+                                                    <span class="input-label-semicolon">:</span>
+                                                </div>
+                                                <div class="single-input-field-wrap">
+                                                    <input type="number" name="site-length-B" id="site-length-B">
+                                                    <a class="input-unit"><span>mm</span></a>
+                                                </div>
+                                            </div>
+                                            <div class="single-input">
+                                                <div class="single-input-label-wrap">
+                                                    <label for="site-breadth-B"><span>Breadth</span><span
+                                                            class="sub-label">(between joist)</span></label>
+                                                    <span class="input-label-semicolon">:</span>
+                                                </div>
+                                                <div class="single-input-field-wrap">
+                                                    <input type="number" name="site-breadth-B" id="site-breadth-B">
+                                                    <a class="input-unit"><span>mm</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="input-group-wrap">
+
+                                        <div class="input-group-title">
+                                            <h5>Pedestal spacing dimensions</h5>
+                                        </div>
+                                        <div class="input-group">
+                                            <div class="single-input">
+                                                <div class="single-input-label-wrap">
+                                                    <label for="along-joist-B">Along joist</label>
+                                                    <span class="input-label-semicolon">:</span>
+                                                </div>
+                                                <div class="single-input-field-wrap">
+                                                    <input type="number" name="along-joist-B" id="along-joist-B">
+                                                    <a class="input-unit"><span>mm</span></a>
+                                                </div>
+                                            </div>
+                                            <div class="single-input">
+                                                <div class="single-input-label-wrap">
+                                                    <label for="between-joist-B">Between joist</label>
+                                                    <span class="input-label-semicolon">:</span>
+                                                </div>
+                                                <div class="single-input-field-wrap">
+                                                    <input type="number" name="between-joist-B" id="between-joist-B">
+                                                    <a class="input-unit"><span>mm</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="input-notes-italic">*Ensure dimensions are recorded in the same
+                                            orientation</p>
+
+                                    </div>
+
+                                    <div class="input-group-wrap visibility-must-hidden">
+                                        <div class="input-group-title">
+                                            <h5>-------------------------------</h5>
+                                        </div>
+                                        <div class="input-group">
+                                            <div class="single-input">
+                                                <div class="single-input-field-wrap pedstal-config-wrap">
+                                                    <select>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-12 col-md-6 section-column section-column-right">
+
+                                <div class="input-wrapper">
+
+                                    <div class="input-group-wrap">
+
+                                        <div class="input-group-title">
+                                            <h5>Calculations</h5>
+                                        </div>
+                                        <div class="input-group">
+                                            <div class="single-input">
+                                                <div class="single-input-label-wrap">
+                                                    <label for="calculation-area-B">Area</label>
+                                                    <span class="input-label-semicolon">:</span>
+                                                </div>
+                                                <div class="single-input-field-wrap">
+                                                    <input readonly class="only-bottom-border" type="number"
+                                                        name="calculation-area-B" id="calculation-area-B">
+                                                    <a class="input-unit"><span>m<sup>2</sup></span></a>
+                                                </div>
+                                            </div>
+
+                                            <div class="single-input visibility-must-hidden">
+                                                <div class="single-input-label-wrap">
+                                                    <label>Pavers</label>
+                                                    <span class="input-label-semicolon">:</span>
+                                                </div>
+                                                <div class="single-input-field-wrap">
+                                                    <input readonly class="only-bottom-border" type="number">
+                                                    <a class="input-unit"><span>no.</span></a>
+                                                </div>
+                                            </div>
+
+                                            <div class="single-input">
+                                                <div class="single-input-label-wrap">
+                                                    <label for="calculation-pedestals-B">Pedestals</label>
+                                                    <span class="input-label-semicolon">:</span>
+                                                </div>
+                                                <div class="single-input-field-wrap">
+                                                    <input readonly class="only-bottom-border" type="number"
+                                                        name="calculation-pedestals-B" id="calculation-pedestals-B">
+                                                    <a class="input-unit"><span>no.</span></a>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="image-section" id="img-section-2B">
+
+                                    <div class="image-wrap">
+                                        <img id="CornersCentre" src="assets/img/CornersOnly-Decking.png"
+                                            alt="CornersCentre">
+                                    </div>
+
+
+                                </div>
+
+                            </div>
 
                         </div>
 
                     </div>
-                </div>
 
-                <div class="section" id="section-3">
+                    <div class="section" id="section-3">
+
+                        <div class="section-title">
+                            <h3>Input height and slope values</h3>
+                        </div>
+                        <div class="section-content">
+                            <div class="col-12 col-md-6 section-column section-column-left">
+                                <div class="input-wrapper">
+                                    <div class="input-group-wrap">
+
+                                        <div class="input-group-title">
+                                            <h5>Elmich pedestals</h5>
+                                        </div>
+                                        <div class="input-group">
+                                            <div class="single-input">
+                                                <div class="single-input-label-wrap">
+                                                    <label for="pedstal-total"><span>Total</span></label>
+                                                    <span class="input-label-semicolon">:</span>
+                                                </div>
+                                                <div class="single-input-field-wrap">
+                                                    <input class="only-bottom-border" type="number" name="pedstal-total"
+                                                        id="pedstal-total">
+                                                    <a class="input-unit"><span>no.</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="input-group-wrap">
+                                        <div class="input-group-title">
+                                            <h5>Height dimensions</h5>
+                                        </div>
+                                        <div class="input-group">
+                                            <div class="single-input">
+                                                <div class="single-input-label-wrap">
+                                                    <label for="dimensions-short-height"><span>Shortest
+                                                            height</span></label>
+                                                    <span class="input-label-semicolon">:</span>
+                                                </div>
+                                                <div class="single-input-field-wrap">
+                                                    <input type="number" name="dimensions-short-height"
+                                                        id="dimensions-short-height">
+                                                    <a class="input-unit"><span>mm</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="image-section" id="img-section-3">
+                                        <div class="image-wrap">
+                                            <img id="CornersCentre" src="assets/img/typical-details-A.jpg"
+                                                alt="CornersCentre">
+                                        </div>
+                                    </div>
+
+                                    <div class="input-group-wrap">
+
+                                        <div class="input-group-title">
+                                            <h5>Slope data</h5>
+                                        </div>
+                                        <div class="input-group">
+                                            <div class="single-input">
+                                                <div class="single-input-label-wrap">
+                                                    <label for="slope-percentage">Slope percentage</label>
+                                                    <span class="input-label-semicolon">:</span>
+                                                </div>
+                                                <div class="single-input-field-wrap">
+                                                    <select name="slope-percentage" id="slope-percentage">
+                                                        <option value=""></option>
+                                                        <option value="1">1%</option>
+                                                        <option value="2">2%</option>
+                                                        <option value="3">3%</option>
+                                                        <option value="4">4%</option>
+                                                        <option value="5">5%</option>
+
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                            <div class="single-input">
+                                                <div class="single-input-label-wrap">
+                                                    <label for="slope-direction">Slope direction</label>
+                                                    <span class="input-label-semicolon">:</span>
+                                                </div>
+                                                <div class="single-input-field-wrap">
+                                                    <select name="slope-direction" id="slope-direction">
+                                                        <option value=""></option>
+                                                        <option value="1">Length-wise</option>
+                                                        <option value="2">Breadth-wise</option>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-12 col-md-6 section-column section-column-right">
+
+                                <div class="result-table-wrapper">
+
+                                    <div class="input-group-title">
+                                        <h5>VersiJack® breakdown</h5>
+                                    </div>
+
+                                    <table id="result-table">
+
+                                        <tr>
+                                            <th>Model</th>
+                                            <th>Height Range</th>
+                                            <th>Quantity</th>
+                                        </tr>
+
+                                        <tr>
+                                            <td>VersiJack® F1</td>
+                                            <td>37 - 50 mm</td>
+                                            <td id="result-f-1">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>VersiJack® F2</td>
+                                            <td>50 - 74 mm</td>
+                                            <td id="result-f-2">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>VersiJack® F3</td>
+                                            <td>74 - 117 mm</td>
+                                            <td id="result-f-3">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>VersiJack® F4</td>
+                                            <td>117 - 201 mm</td>
+                                            <td id="result-f-4">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>VersiJack® F5</td>
+                                            <td>196 - 281 mm</td>
+                                            <td id="result-f-5">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>VersiJack® F6</td>
+                                            <td>277 - 446 mm</td>
+                                            <td id="result-f-6">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>VersiJack® F7</td>
+                                            <td>356 - 524 mm</td>
+                                            <td id="result-f-7">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>VersiJack® F8</td>
+                                            <td>437 - 690 mm</td>
+                                            <td id="result-f-8">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>VersiJack® F9</td>
+                                            <td>516 - 768 mm</td>
+                                            <td id="result-f-9">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>VersiJack® F10</td>
+                                            <td>596 - 934 mm</td>
+                                            <td id="result-f-10">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>VersiJack® F11</td>
+                                            <td>675 - 1014 mm</td>
+                                            <td id="result-f-11">0</td>
+                                        </tr>
+
+
+
+                                    </table>
+
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="nav-buttons">
+                        <button class="nav-btn nav-back">Back</button>
+                        <button class="nav-btn nav-next">Next</button>
+                    </div>
 
                 </div>
 
             </div>
 
-            <div class="nav-buttons">
 
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <script src="plugins/jquery/jquery.min.js"></script>
-    <script src="plugins/accounting/accounting.min.js"></script>
-    <script src="plugins/popper/popper.min.js"></script>
-    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="main.js?v=1.0.0"></script>
+            <script src="plugins/jquery/jquery.min.js"></script>
+            <script src="plugins/accounting/accounting.min.js"></script>
+            <script src="plugins/popper/popper.min.js"></script>
+            <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+            <script src="functions.js"></script>
+            <script src="main.js?v=1.0.0"></script>
 
 
 </body>

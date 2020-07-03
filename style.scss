@@ -1,3 +1,41 @@
+// Responsive breakdown mixins
+//===================================
+@mixin mobile {
+  @media (max-width: 576px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: 992px) {
+    @content;
+  }
+}
+
+@mixin large-screen {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+// Some required tweaks
+// ==============================
+.visibility-must-hidden {
+  visibility: hidden;
+
+  @include tablet {
+    display: none !important;
+  }
+}
+
+// General styling
+// ==============================
 * {
   margin: 0;
   padding: 0;
@@ -20,6 +58,54 @@ html {
     font-size: 32px;
     padding-top: 15px;
     padding-bottom: 15px;
+  }
+}
+
+.nav-buttons {
+  width: 100%;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  .nav-btn {
+    color: white;
+    width: 100px;
+    height: 40px;
+    margin-left: 20px;
+    transition: all 0.4s ease;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .nav-next {
+    background-color: #fe5700;
+    border: 1px solid #fe5700;
+    &:hover {
+      background-color: lighten(#fe5700, 10%);
+      border: 1px solid lighten(#fe5700, 10%);
+    }
+  }
+  .nav-next.inactive {
+    background-color: transparent;
+    color: lighten(#fe5700, 40%);
+    border: 2px solid lighten(#fe5700, 40%);
+  }
+
+  .nav-back {
+    border: 1px solid #3f3f3f;
+    background-color: #3f3f3f;
+    &:hover {
+      border: 1px solid lighten(#3f3f3f, 10%);
+      background-color: lighten(#3f3f3f, 10%);
+    }
+  }
+
+  .nav-back.inactive {
+    color: lighten(#3f3f3f, 50%) !important;
+    border: 2px solid lighten(#3f3f3f, 50%) !important;
+    background-color: transparent !important;
   }
 }
 
@@ -57,8 +143,63 @@ html {
 .section-content {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: row;
+
+  @include tablet {
+    flex-direction: column;
+  }
+}
+
+.col-12,
+.section-column-right,
+.col-md-6,
+.section-column {
+  @include tablet {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+}
+
+.section-column {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+
+  @include tablet {
+    align-items: center !important;
+  }
+}
+
+.section-column-left {
+  padding-left: 100px;
+  padding-right: 60px;
+
+  @include large-screen() {
+    padding-left: 40px;
+    padding-right: 30px;
+  }
+
+  @include desktop {
+    padding-left: 0;
+    padding-right: 15px;
+  }
+}
+
+.section-column-right {
+  padding-left: 60px;
+  padding-right: 100px;
+
+  @include large-screen() {
+    padding-left: 30px;
+    padding-right: 40px;
+  }
+
+  @include desktop {
+    padding-left: 15px;
+    padding-right: 0;
+  }
 }
 
 .section-title {
@@ -86,6 +227,147 @@ html {
       border-radius: 2px;
     }
   }
+}
+
+.image-section {
+  width: 100%;
+  padding-top: 30px;
+
+  .image-wrap {
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+// General input element style
+//============================
+
+.input-group-title {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  h5 {
+    color: lighten(#363636, 5%);
+    font-weight: bold;
+    font-size: 18px;
+  }
+}
+
+.single-input {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding-bottom: 30px;
+
+  @include tablet {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.single-input-label-wrap {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  label {
+    margin-bottom: 0;
+    color: darken(#818998, 10%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .sub-label {
+    font-size: 12px;
+  }
+  .input-label-semicolon {
+    padding-right: 10px;
+    @include tablet {
+      display: none;
+    }
+  }
+}
+
+.single-input-field-wrap {
+  width: 68%;
+  position: relative;
+
+  @include tablet {
+    width: 100%;
+  }
+
+  input,
+  select {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+    border-radius: 0;
+    border: 1px solid lighten(#5a5a5a, 20%);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: bold;
+    color: lighten(#3f3f3f, 20%);
+  }
+
+  input.only-bottom-border {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    box-shadow: inset 0 0px 1px rgba(0, 0, 0, 0.075);
+  }
+
+  input:focus,
+  select:focus {
+    outline: none;
+    border-color: #fe5700;
+    box-shadow: 0 0 0 1px #fe5700 inset;
+  }
+  input.only-bottom-border:focus {
+    border-bottom-color: #fe5700;
+    box-shadow: 0 -1px 0px 0px #fe5700 inset;
+  }
+
+  a {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-4%, -50%);
+    z-index: 1;
+    width: 50px;
+    height: 90%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+
+    span {
+      margin-top: -2px;
+      color: lighten(#3f3f3f, 20%);
+      padding-right: 10px;
+      padding-bottom: 5px;
+    }
+  }
+}
+
+.single-input-field-wrap.pedstal-config-wrap {
+  width: 100%;
+}
+
+.input-notes-italic {
+  font-style: italic;
+  font-size: 14px;
+  color: #fe5700;
 }
 
 // Customized Section-1 style
@@ -142,14 +424,70 @@ html {
   }
 }
 
-// General input element style
-//============================
+// Customized Section-2A style
+//===========================
 
-.single-input {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
+#section-2A {
+  .section-column-right {
+    justify-content: space-around;
+
+    @include tablet {
+      flex-direction: column-reverse;
+    }
+  }
 }
 
-// Customized Section-2 style
+#img-section-2A {
+  @include tablet {
+    height: 300px;
+  }
+
+  .image-wrap {
+    width: 100%;
+    position: relative;
+  }
+
+  img {
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+  }
+}
+
+// Customized Section-2B style
 //===========================
+#img-section-2B {
+  padding-top: 30px;
+  img {
+    opacity: 1;
+  }
+}
+
+// Customized Section-3 style
+//===========================
+#img-section-3 {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.result-table-wrapper {
+  width: 100%;
+}
+
+#result-table {
+  width: 100%;
+
+  th,
+  td {
+    border: 1px solid lighten(#5a5a5a, 20%);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  th {
+    font-weight: bold;
+    font-size: 18px;
+  }
+}
