@@ -449,7 +449,6 @@ html {
 
 #section-1 .root-selector-img-wrap {
   width: 100%;
-  height: 400px;
   overflow: hidden;
   position: relative;
   display: -webkit-box;
@@ -481,9 +480,24 @@ html {
   position: relative;
 }
 
+@media (max-width: 768px) {
+  #section-1 .root-selector-title h2 {
+    font-size: 18px;
+  }
+}
+
 .root-selector-wrap:hover img {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  #section-1 .section-content {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
 }
 
 #section-2A .section-column-right {
