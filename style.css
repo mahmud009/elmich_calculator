@@ -19,7 +19,6 @@ html {
 
 .main-calc-wrap {
   width: 100%;
-  border: 1px solid #5a5a5a;
   margin-top: 30px;
 }
 
@@ -39,6 +38,8 @@ html {
   text-align: center;
   padding-top: 50px;
   padding-bottom: 50px;
+  position: relative;
+  z-index: 99;
 }
 
 .nav-buttons .nav-btn {
@@ -48,10 +49,15 @@ html {
   margin-left: 20px;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
+  display: none;
 }
 
 .nav-buttons .nav-btn:focus {
   outline: none;
+}
+
+.nav-buttons .nav-btn:first-child {
+  margin-left: 0;
 }
 
 .nav-buttons .nav-next {
@@ -114,6 +120,25 @@ html {
 .section-indicator .section-indicator-btn.active {
   color: #fe5700;
   border-color: #fe5700;
+}
+
+.section-wrap {
+  width: 100%;
+  position: relative;
+}
+
+.section-wrap .section {
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+#section-1 {
+  position: relative;
+  opacity: 1;
+  z-index: 99;
 }
 
 .section-content {

@@ -47,7 +47,7 @@ html {
 
 .main-calc-wrap {
   width: 100%;
-  border: 1px solid #5a5a5a;
+  // border: 1px solid #5a5a5a;
   margin-top: 30px;
 }
 
@@ -66,6 +66,8 @@ html {
   text-align: center;
   padding-top: 50px;
   padding-bottom: 50px;
+  position: relative;
+  z-index: 99;
 
   .nav-btn {
     color: white;
@@ -73,10 +75,15 @@ html {
     height: 40px;
     margin-left: 20px;
     transition: all 0.4s ease;
+    display: none;
 
     &:focus {
       outline: none;
     }
+  }
+
+  .nav-btn:first-child {
+    margin-left: 0;
   }
 
   .nav-next {
@@ -138,6 +145,24 @@ html {
     color: #fe5700;
     border-color: #fe5700;
   }
+}
+
+.section-wrap {
+  width: 100%;
+  position: relative;
+
+  .section {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+}
+
+#section-1 {
+  position: relative;
+  opacity: 1;
+  z-index: 99;
 }
 
 .section-content {
