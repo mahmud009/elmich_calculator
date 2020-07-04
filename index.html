@@ -144,9 +144,9 @@
 
                                             <div class="single-input-field-wrap pedstal-config-wrap">
                                                 <select name="pedestal-config-A" id="pedestal-config-A">
-                                                    <option value="CornersOnly">Corners Only</option>
-                                                    <option value="CornersCentre" selected>Corners & Center</option>
-                                                    <option value="CornersCentreEdges">Corners, Center & Edges</option>
+                                                    <option value="1">Corners Only</option>
+                                                    <option value="2" selected>Corners & Center</option>
+                                                    <option value="3">Corners, Center & Edges</option>
                                                 </select>
                                             </div>
 
@@ -189,6 +189,17 @@
                                         </div>
                                         <div class="single-input">
                                             <div class="single-input-label-wrap">
+                                                <label for="calculation-pavers-A">Pavers</label>
+                                                <span class="input-label-semicolon">:</span>
+                                            </div>
+                                            <div class="single-input-field-wrap">
+                                                <input readonly class="only-bottom-border" type="number"
+                                                    name="calculation-pavers-A" id="calculation-pavers-A">
+                                                <a class="input-unit"><span>no.</span></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-input">
+                                            <div class="single-input-label-wrap">
                                                 <label for="calculation-pedestals-A">Pedestals</label>
                                                 <span class="input-label-semicolon">:</span>
                                             </div>
@@ -199,17 +210,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="single-input">
-                                            <div class="single-input-label-wrap">
-                                                <label for="calculation-pavers-A">Pavers</label>
-                                                <span class="input-label-semicolon">:</span>
-                                            </div>
-                                            <div class="single-input-field-wrap">
-                                                <input readonly class="only-bottom-border" type="number"
-                                                    name="calculation-pavers-A" id="calculation-pavers-A">
-                                                <a class="input-unit"><span>no.</span></a>
-                                            </div>
-                                        </div>
+
                                     </div>
 
                                 </div>
@@ -412,8 +413,8 @@
                                                 <span class="input-label-semicolon">:</span>
                                             </div>
                                             <div class="single-input-field-wrap">
-                                                <input class="only-bottom-border" type="number" name="pedstal-total"
-                                                    id="pedstal-total">
+                                                <input readonly class="only-bottom-border" type="number"
+                                                    name="pedstal-total" id="pedstal-total">
                                                 <a class="input-unit"><span>no.</span></a>
                                             </div>
                                         </div>
