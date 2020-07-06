@@ -145,7 +145,7 @@
                                             <div class="single-input-field-wrap pedstal-config-wrap">
                                                 <select name="pedestal-config-A" id="pedestal-config-A">
                                                     <option value="1">Corners Only</option>
-                                                    <option value="2" selected>Corners & Center</option>
+                                                    <option value="2">Corners & Center</option>
                                                     <option value="3">Corners, Center & Edges</option>
                                                 </select>
                                             </div>
@@ -460,13 +460,12 @@
                                             </div>
                                             <div class="single-input-field-wrap">
                                                 <select name="slope-percentage" id="slope-percentage">
-                                                    <option value=""></option>
+                                                    <option value="0">0%</option>
                                                     <option value="1">1%</option>
                                                     <option value="2">2%</option>
                                                     <option value="3">3%</option>
                                                     <option value="4">4%</option>
                                                     <option value="5">5%</option>
-
                                                 </select>
 
                                             </div>
@@ -478,7 +477,6 @@
                                             </div>
                                             <div class="single-input-field-wrap">
                                                 <select name="slope-direction" id="slope-direction">
-                                                    <option value=""></option>
                                                     <option value="1">Length-wise</option>
                                                     <option value="2">Breadth-wise</option>
                                                 </select>
@@ -579,6 +577,8 @@
                 <button class="nav-btn nav-back" data-target="back">Back</button>
                 <button class="nav-btn nav-next" data-target="next">Next</button>
             </div>
+
+            <button id="submit-temp" onclick="calculate_A()">Submit Temp</button>
         </div>
     </div>
     <script src="plugins/jquery/jquery.min.js"></script>

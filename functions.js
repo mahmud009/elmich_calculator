@@ -150,9 +150,11 @@ function dynamicChanges_A() {
         siteLength > 0 && siteBreadth > 0 && tileLength > 0 && tileBreadth > 0;
 
       if (condition) {
-        let pavers = (siteLength / tileLength) * (siteBreadth / tileBreadth);
+        let pavers =
+          Math.ceil(siteLength / tileLength) *
+          Math.ceil(siteBreadth / tileBreadth);
 
-        $("#calculation-pavers-A").val(Math.ceil(pavers));
+        $("#calculation-pavers-A").val(pavers);
       } else {
         $("#calculation-pavers-A").val("");
       }
@@ -182,20 +184,19 @@ function dynamicChanges_A() {
 
     if (condition) {
       let pedestals;
-      let pavers = Math.ceil(
-        (siteLength / tileLength) * (siteBreadth / tileBreadth)
-      );
-
+      let pavers =
+        Math.ceil(siteLength / tileLength) *
+        Math.ceil(siteBreadth / tileBreadth);
       switch (true) {
         case config == 1:
           pedestals =
-            Math.ceil(siteLength / tileLength + 1) *
-            Math.ceil(siteBreadth / tileBreadth + 1);
+            (Math.ceil(siteLength / tileLength) + 1) *
+            (Math.ceil(siteBreadth / tileBreadth) + 1);
           break;
         case config == 2:
           pedestals =
-            Math.ceil(siteLength / tileLength + 1) *
-              Math.ceil(siteBreadth / tileBreadth + 1) +
+            (Math.ceil(siteLength / tileLength) + 1) *
+              (Math.ceil(siteBreadth / tileBreadth) + 1) +
             pavers;
           break;
 
@@ -256,8 +257,8 @@ function dynamicChanges_B() {
 
       if (condition) {
         let pedestals =
-          Math.ceil(siteLength / alongJoist + 1) *
-          Math.ceil(siteBreadth / betweenJoist + 1);
+          (Math.ceil(siteLength / alongJoist) + 1) *
+          (Math.ceil(siteBreadth / betweenJoist) + 1);
 
         $("#calculation-pedestals-B").val(pedestals);
 
@@ -269,5 +270,107 @@ function dynamicChanges_B() {
       }
     }
   );
+}
+//xxxxxxxxxxxxxxx-- End of function --xxxxxxxxxxxxxxxxxxxxx
+
+// Helper function to calculate result tables Qauntity column value
+//==================================================================
+
+function tableOutput(value, config) {
+  let result;
+
+  switch (true) {
+    case value >= 37 && value <= 50:
+      result = Math.round(config.siteBreadth / config.tileBreadth) + 1;
+      $(`#result-f-1`).val(result);
+      break;
+  }
+
+  return result;
+}
+
+function generateTable() {}
+
+// Calculate Route - A
+// ==============================================================
+function calculate_A() {
+  // Intialization of all field variable
+  let siteLength = Number($("#site-length-A").val());
+  let siteBreadth = Number($("#site-breadth-A").val());
+  let tileLength = Number($("#tile-length-A").val());
+  let tileBreadth = Number($("#tile-breadth-A").val());
+  let pedConfig = Number($("#pedestal-config-A").val());
+  let pedTotal = Number($("#pedstal-total").val());
+  let shortHeight = Number($("#dimensions-short-height").val());
+  let slopePercent = Number($("#slope-percentage").val());
+  let slopeDirection = Number($("#slope-direction").val());
+
+  // Initiazation of result table
+  let table = [];
+
+  if (pedConfig == 1 && slopeDirection == 1) {
+    // Cornersonly Length wise row numbers
+    let rowCount = Math.ceil(siteLength / tileLength) + 1;
+    for (let i = 1; i <= rowCount; i++) {
+      let tableRow = {};
+      tableRow.rowNumber = i;
+
+      // Length wise row heights
+      tableRow.rowHeights = Math.floor(
+        (((i - 1) * slopePercent) / 100) * tileLength +
+          shortHeight +
+          Number(0.00001)
+      );
+      tableRow.pedConfig = pedConfig;
+      tableRow.slopeDirection = slopeDirection;
+      table.push(tableRow);
+    }
+  }
+
+  if (pedConfig == 1 && slopeDirection == 2) {
+    // Cornersonly Breadth wise row numbers
+    let rowCount = Math.ceil(siteBreadth / tileBreadth) + 1;
+    for (let i = 1; i <= rowCount; i++) {
+      let tableRow = {};
+      tableRow.rowNumber = i;
+
+      // Breadth wise row heights
+      tableRow.rowHeights = Math.floor(
+        (((i - 1) * slopePercent) / 100) * tileBreadth +
+          shortHeight +
+          Number(0.00001)
+      );
+      tableRow.pedConfig = pedConfig;
+      tableRow.slopeDirection = slopeDirection;
+      table.push(tableRow);
+    }
+  }
+
+  if (pedConfig == 2 && slopeDirection == 1) {
+    // Corners-center length wise row numbers
+    let rowCount = Math.ceil(siteLength / tileLength);
+    let tableRow = {};
+    for (let i = 1; i <= rowCount; i++) {
+      tableRow.rowNumber = i;
+
+      // length wise row heights
+      tableRow.rowHeights = Math.floor(
+        (((i - 1) * slopePercent) / 100) * tileLength +
+          shortHeight +
+          Number(0.00001)
+      );
+      tableRow.center = Math.ceil(
+        (((i - 1) * slopePercent) / 100) * tileLength +
+          shortHeight +
+          (tileLength * slopePercent) / 100 / 2 +
+          Number(0.00001)
+      );
+      tableRow.pedConfig = pedConfig;
+      tableRow.slopeDirection = slopeDirection;
+      table.push(tableRow);
+    }
+  }
+
+  console.log(table);
 }
 //xxxxxxxxxxxxxxx-- End of function --xxxxxxxxxxxxxxxxxxxxx
