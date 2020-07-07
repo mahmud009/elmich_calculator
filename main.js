@@ -3,4 +3,5 @@ $(function () {
   tabbedView();
   dynamicChanges_A();
   dynamicChanges_B();
+  calculateOnAnyChange();
 });

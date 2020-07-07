@@ -289,7 +289,51 @@ function tableOutput(value, config) {
   return result;
 }
 
-function generateTable() {}
+function tableParser_A(column) {
+  let ranges = [
+    { min: 37, max: 50 },
+    { min: 51, max: 74 },
+    { min: 75, max: 117 },
+    { min: 118, max: 201 },
+    { min: 202, max: 281 },
+    { min: 282, max: 446 },
+    { min: 447, max: 524 },
+    { min: 525, max: 690 },
+    { min: 691, max: 768 },
+    { min: 769, max: 934 },
+    { min: 935, max: 1014 },
+  ];
+
+  let tableCells = [];
+
+  for (let i = 0; i < ranges.length; i++) {
+    let cell = {};
+    cell.name = `result-f-${i + 1}`;
+    cell.count = 0;
+    cell.min = ranges[i].min;
+    cell.max = ranges[i].max;
+    tableCells.push(cell);
+  }
+
+  for (let i = 0; i < column.length; i++) {
+    for (let j = 0; j < tableCells.length; j++) {
+      let current = column[i];
+      let cell = tableCells[j];
+      if (current >= cell.min && current <= cell.max) {
+        cell.count++;
+      }
+    }
+  }
+  return tableCells;
+}
+
+function DOMTableRender_A(tableData) {
+  for (let i = 0; i < tableData.length; i++) {
+    let resultCell = $(`#${tableData[i].name}`);
+    let resultValue = tableData[i].resultValue;
+    resultCell.text(resultValue);
+  }
+}
 
 // Calculate Route - A
 // ==============================================================
@@ -307,7 +351,10 @@ function calculate_A() {
 
   // Initiazation of result table
   let table = [];
+  let result;
 
+  // Pedestal confing "corners-only" and slope direction "Length-wise"
+  //-----------------------------------------------------------------
   if (pedConfig == 1 && slopeDirection == 1) {
     // Cornersonly Length wise row numbers
     let rowCount = Math.ceil(siteLength / tileLength) + 1;
@@ -325,8 +372,23 @@ function calculate_A() {
       tableRow.slopeDirection = slopeDirection;
       table.push(tableRow);
     }
+
+    let rowHeightsColumn = table.map((m) => {
+      return m.rowHeights;
+    });
+
+    result = tableParser_A(rowHeightsColumn);
+    result.map((m) => {
+      if (m.count) {
+        m.resultValue = m.count * Math.ceil(siteBreadth / tileBreadth + 1);
+      } else {
+        m.resultValue = 0;
+      }
+    });
   }
 
+  // Pedestal confing "corners-only" and slope direction "breadth-wise"
+  //-------------------------------------------------------------------
   if (pedConfig == 1 && slopeDirection == 2) {
     // Cornersonly Breadth wise row numbers
     let rowCount = Math.ceil(siteBreadth / tileBreadth) + 1;
@@ -344,8 +406,23 @@ function calculate_A() {
       tableRow.slopeDirection = slopeDirection;
       table.push(tableRow);
     }
+
+    let rowHeightsColumn = table.map((m) => {
+      return m.rowHeights;
+    });
+
+    result = tableParser_A(rowHeightsColumn);
+    result.map((m) => {
+      if (m.count) {
+        m.resultValue = m.count * Math.ceil(siteLength / tileLength + 1);
+      } else {
+        m.resultValue = 0;
+      }
+    });
   }
 
+  // Pedestal confing "corners-center" and slope direction "length-wise"
+  //-------------------------------------------------------------------
   if (pedConfig == 2 && slopeDirection == 1) {
     // Corners-center length wise row numbers
     let rowCount = Math.ceil(siteLength / tileLength) + 1;
@@ -368,15 +445,53 @@ function calculate_A() {
 
     for (let i = 1; i <= rowCount - 1; i++) {
       // length wise center
-      table[i - 1].centerHeights = Math.ceil(
-        (((i - 1) * slopePercent) / 100) * tileLength +
+      table[i - 1].centerHeights = Number(
+        (
+          (((i - 1) * slopePercent) / 100) * tileLength +
           shortHeight +
           (tileLength * slopePercent) / 100 / 2 +
           Number(0.00001)
+        ).toFixed(0)
       );
+    }
+
+    let rowHeightsColumn = table.map((m) => {
+      return m.rowHeights;
+    });
+
+    result = tableParser_A(rowHeightsColumn);
+    result.map((m) => {
+      if (m.count) {
+        m.resultValue = m.count * Math.ceil(siteBreadth / tileBreadth + 1);
+      } else {
+        m.resultValue = 0;
+      }
+    });
+
+    let centerHeightsColumn = table.map((m) => {
+      if (m.centerHeights) {
+        return m.centerHeights;
+      } else {
+        return 0;
+      }
+    });
+
+    let centerResult = tableParser_A(centerHeightsColumn);
+    centerResult.map((m) => {
+      if (m.count) {
+        m.resultValue = m.count * Math.ceil(siteBreadth / tileBreadth);
+      } else {
+        m.resultValue = 0;
+      }
+    });
+    for (let i = 0; i < result.length; i++) {
+      result[i].resultValue =
+        result[i].resultValue + centerResult[i].resultValue;
     }
   }
 
+  // Pedestal confing "corners-center" and slope direction "breadth-wise"
+  //-------------------------------------------------------------------
   if (pedConfig == 2 && slopeDirection == 2) {
     // Corners-center length wise row numbers
     let rowCount = Math.ceil(siteBreadth / tileBreadth) + 1;
@@ -406,8 +521,44 @@ function calculate_A() {
           Number(0.00001)
       );
     }
+
+    let rowHeightsColumn = table.map((m) => {
+      return m.rowHeights;
+    });
+
+    result = tableParser_A(rowHeightsColumn);
+    result.map((m) => {
+      if (m.count) {
+        m.resultValue = m.count * Math.ceil(siteLength / tileLength + 1);
+      } else {
+        m.resultValue = 0;
+      }
+    });
+
+    let centerHeightsColumn = table.map((m) => {
+      if (m.centerHeights) {
+        return m.centerHeights;
+      } else {
+        return 0;
+      }
+    });
+
+    let centerResult = tableParser_A(centerHeightsColumn);
+    centerResult.map((m) => {
+      if (m.count) {
+        m.resultValue = m.count * Math.ceil(siteLength / tileLength);
+      } else {
+        m.resultValue = 0;
+      }
+    });
+    for (let i = 0; i < result.length; i++) {
+      result[i].resultValue =
+        result[i].resultValue + centerResult[i].resultValue;
+    }
   }
 
+  // Pedestal confing "corners-center-edges" and slope direction "length-wise"
+  //--------------------------------------------------------------------------
   if (pedConfig == 3 && slopeDirection == 1) {
     // Corners-center-edges length wise row numbers
     let rowCount = Math.ceil(siteLength / tileLength) * 2 + 1;
@@ -417,6 +568,56 @@ function calculate_A() {
       tableRow.rowNumber = i;
 
       // length wise row heights
+      tableRow.rowHeights = Math.floor(
+        ((((i - 1) * slopePercent) / 100) * tileLength) / 2 +
+          shortHeight +
+          Number(0.00001)
+      );
+
+      tableRow.pedConfig = pedConfig;
+      tableRow.slopeDirection = slopeDirection;
+      table.push(tableRow);
+    }
+
+    for (let i = 1; i <= (rowCount - 1) / 2; i++) {
+      // length wise center
+      table[i - 1].centerHeights = Number(
+        (
+          (((i - 1) * slopePercent) / 100) * tileLength +
+          shortHeight +
+          (tileLength * slopePercent) / 100 / 2 +
+          Number(0.00001)
+        ).toFixed(0)
+      );
+    }
+
+    let rowHeightsColumn = table.map((m) => {
+      return m.rowHeights;
+    });
+
+    result = tableParser_A(rowHeightsColumn);
+    console.log(result);
+    result.map((m) => {
+      if (m.count) {
+        m.resultValue =
+          m.count * (Math.ceil(siteBreadth / tileBreadth) * 2 + 1);
+      } else {
+        m.resultValue = 0;
+      }
+    });
+  }
+
+  // Pedestal confing "corners-center-edges" and slope direction "breadth-wise"
+  //--------------------------------------------------------------------------
+  if (pedConfig == 3 && slopeDirection == 2) {
+    // Corners-center-edges breadth wise row numbers
+    let rowCount = Math.ceil(siteBreadth / tileBreadth) * 2 + 1;
+
+    for (let i = 1; i <= rowCount; i++) {
+      let tableRow = {};
+      tableRow.rowNumber = i;
+
+      // Breadth wise row heights
       tableRow.rowHeights = Math.floor(
         Math.ceil(((((i - 1) * slopePercent) / 100) * tileLength) / 2) +
           shortHeight +
@@ -429,16 +630,47 @@ function calculate_A() {
     }
 
     for (let i = 1; i <= (rowCount - 1) / 2; i++) {
-      // length wise center
-      table[i - 1].centerHeights = Math.ceil(
-        (((i - 1) * slopePercent) / 100) * tileLength +
+      // Breadth wise center
+      table[i - 1].centerHeights = Number(
+        (
+          (((i - 1) * slopePercent) / 100) * tileLength +
           shortHeight +
           (tileLength * slopePercent) / 100 / 2 +
           Number(0.00001)
+        ).toFixed(0)
       );
     }
+
+    let rowHeightsColumn = table.map((m) => {
+      return m.rowHeights;
+    });
+
+    result = tableParser_A(rowHeightsColumn);
+    console.log(result);
+    result.map((m) => {
+      if (m.count) {
+        m.resultValue = m.count * (Math.ceil(siteLength / tileLength) * 2 + 1);
+      } else {
+        m.resultValue = 0;
+      }
+    });
   }
 
+  DOMTableRender_A(result);
   console.log(table);
 }
 //xxxxxxxxxxxxxxx-- End of function --xxxxxxxxxxxxxxxxxxxxx
+
+function calculateOnAnyChange() {
+  $("#section-3 input, #section-3 select").on("change", function () {
+    if (CURRENT_ROUTE == "A") {
+      calculate_A();
+    }
+  });
+
+  $(".nav-next").on("click", function () {
+    if (CURRENT_ROUTE == "A") {
+      calculate_A();
+    }
+  });
+}
