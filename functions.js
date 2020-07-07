@@ -348,9 +348,10 @@ function calculate_A() {
 
   if (pedConfig == 2 && slopeDirection == 1) {
     // Corners-center length wise row numbers
-    let rowCount = Math.ceil(siteLength / tileLength);
-    let tableRow = {};
+    let rowCount = Math.ceil(siteLength / tileLength) + 1;
+
     for (let i = 1; i <= rowCount; i++) {
+      let tableRow = {};
       tableRow.rowNumber = i;
 
       // length wise row heights
@@ -359,15 +360,82 @@ function calculate_A() {
           shortHeight +
           Number(0.00001)
       );
-      tableRow.center = Math.ceil(
+
+      tableRow.pedConfig = pedConfig;
+      tableRow.slopeDirection = slopeDirection;
+      table.push(tableRow);
+    }
+
+    for (let i = 1; i <= rowCount - 1; i++) {
+      // length wise center
+      table[i - 1].centerHeights = Math.ceil(
         (((i - 1) * slopePercent) / 100) * tileLength +
           shortHeight +
           (tileLength * slopePercent) / 100 / 2 +
           Number(0.00001)
       );
+    }
+  }
+
+  if (pedConfig == 2 && slopeDirection == 2) {
+    // Corners-center length wise row numbers
+    let rowCount = Math.ceil(siteBreadth / tileBreadth) + 1;
+
+    for (let i = 1; i <= rowCount; i++) {
+      let tableRow = {};
+      tableRow.rowNumber = i;
+
+      // length wise row heights
+      tableRow.rowHeights = Math.floor(
+        (((i - 1) * slopePercent) / 100) * tileLength +
+          shortHeight +
+          Number(0.00001)
+      );
+
       tableRow.pedConfig = pedConfig;
       tableRow.slopeDirection = slopeDirection;
       table.push(tableRow);
+    }
+
+    for (let i = 1; i <= rowCount - 1; i++) {
+      // length wise center
+      table[i - 1].centerHeights = Math.ceil(
+        (((i - 1) * slopePercent) / 100) * tileLength +
+          shortHeight +
+          (tileLength * slopePercent) / 100 / 2 +
+          Number(0.00001)
+      );
+    }
+  }
+
+  if (pedConfig == 3 && slopeDirection == 1) {
+    // Corners-center-edges length wise row numbers
+    let rowCount = Math.ceil(siteLength / tileLength) * 2 + 1;
+
+    for (let i = 1; i <= rowCount; i++) {
+      let tableRow = {};
+      tableRow.rowNumber = i;
+
+      // length wise row heights
+      tableRow.rowHeights = Math.floor(
+        Math.ceil(((((i - 1) * slopePercent) / 100) * tileLength) / 2) +
+          shortHeight +
+          Number(0.00001)
+      );
+
+      tableRow.pedConfig = pedConfig;
+      tableRow.slopeDirection = slopeDirection;
+      table.push(tableRow);
+    }
+
+    for (let i = 1; i <= (rowCount - 1) / 2; i++) {
+      // length wise center
+      table[i - 1].centerHeights = Math.ceil(
+        (((i - 1) * slopePercent) / 100) * tileLength +
+          shortHeight +
+          (tileLength * slopePercent) / 100 / 2 +
+          Number(0.00001)
+      );
     }
   }
 
