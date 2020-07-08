@@ -14,6 +14,9 @@ function init() {
     $("#img-section-2A img").css("opacity", "0");
     $(`#corners-${imgId}`).css("opacity", "1");
   });
+
+  // Section-3 default shortest height is 37mm
+  $("#dimensions-short-height").val(37);
 }
 //xxxxxxxxxxxxxxx-- End of function --xxxxxxxxxxxxxxxxxxxxx
 
@@ -270,6 +273,14 @@ function dynamicChanges_B() {
       }
     }
   );
+
+  // Section-3 slope percent change to zero make shortest height 100mm
+  $("#slope-percentage").on("change", function () {
+    let value = $(this).val();
+    if (value == 0) {
+      $("#dimensions-short-height").val(100);
+    }
+  });
 }
 //xxxxxxxxxxxxxxx-- End of function --xxxxxxxxxxxxxxxxxxxxx
 
@@ -352,6 +363,9 @@ function calculate_A() {
   // Initiazation of result table
   let table = [];
   let result;
+
+  // if slope percent is zero then shortest heights become 100mm
+  // and total pedestal value will go to f3
 
   // Pedestal confing "corners-only" and slope direction "Length-wise"
   //-----------------------------------------------------------------
@@ -678,7 +692,10 @@ function calculate_B() {
   let table = [];
   let result;
 
-  // Slope direction "Length-wise"
+  // if slope percent is zero then shortest heights become 100mm
+  // and total pedestal value will go to f3
+
+  // Slope direction "Length-wise"----------------------------------
   //-----------------------------------------------------------------
   if (slopeDirection == 1) {
     // Length wise row numbers
