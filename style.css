@@ -17,6 +17,10 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  font-family: "Helvetica Neue", sans-serif;
+}
+
 .main-calc-wrap {
   width: 100%;
   margin-top: 30px;
@@ -96,13 +100,30 @@ html {
   width: 100%;
   text-align: center;
   padding-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .section-indicator .section-indicator-btn {
-  font-size: 20px;
+  font-size: 16px;
   color: #a7a7a7;
   border: 1px solid #a7a7a7;
-  display: inline-block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 30px;
   height: 30px;
   line-height: 25px;
@@ -243,8 +264,8 @@ html {
 .section-title h3 {
   font-weight: bold;
   font-size: 24px;
-  padding-top: 10px;
-  padding-bottom: 15px;
+  padding-top: 20px;
+  padding-bottom: 25px;
   margin-bottom: 50px;
   color: #5c5c5c;
   position: relative;
@@ -464,6 +485,13 @@ html {
   padding-right: 30px;
 }
 
+@media (max-width: 768px) {
+  #section-1 .section-column {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+}
+
 #section-1 .root-selector-wrap {
   width: 100%;
   cursor: pointer;
@@ -482,6 +510,13 @@ html {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 20px;
+}
+
+@media (max-width: 992px) {
+  #section-1 .root-selector-img-wrap {
+    padding: 10px;
+  }
 }
 
 #section-1 .root-selector-img-wrap img {
