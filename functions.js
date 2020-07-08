@@ -363,11 +363,11 @@ function calculate_A() {
       tableRow.rowNumber = i;
 
       // Length wise row heights
-      tableRow.rowHeights = Math.floor(
+      tableRow.rowHeights = (
         (((i - 1) * slopePercent) / 100) * tileLength +
-          shortHeight +
-          Number(0.00001)
-      );
+        shortHeight +
+        Number(0.00001)
+      ).toFixed(0);
       tableRow.pedConfig = pedConfig;
       tableRow.slopeDirection = slopeDirection;
       table.push(tableRow);
@@ -380,7 +380,7 @@ function calculate_A() {
     result = tableParser_A(rowHeightsColumn);
     result.map((m) => {
       if (m.count) {
-        m.resultValue = m.count * Math.ceil(siteBreadth / tileBreadth + 1);
+        m.resultValue = m.count * (Math.ceil(siteBreadth / tileBreadth) + 1);
       } else {
         m.resultValue = 0;
       }
@@ -397,11 +397,11 @@ function calculate_A() {
       tableRow.rowNumber = i;
 
       // Breadth wise row heights
-      tableRow.rowHeights = Math.floor(
+      tableRow.rowHeights = (
         (((i - 1) * slopePercent) / 100) * tileBreadth +
-          shortHeight +
-          Number(0.00001)
-      );
+        shortHeight +
+        Number(0.00001)
+      ).toFixed(0);
       tableRow.pedConfig = pedConfig;
       tableRow.slopeDirection = slopeDirection;
       table.push(tableRow);
@@ -414,7 +414,7 @@ function calculate_A() {
     result = tableParser_A(rowHeightsColumn);
     result.map((m) => {
       if (m.count) {
-        m.resultValue = m.count * Math.ceil(siteLength / tileLength + 1);
+        m.resultValue = m.count * (Math.ceil(siteLength / tileLength) + 1);
       } else {
         m.resultValue = 0;
       }
@@ -432,11 +432,11 @@ function calculate_A() {
       tableRow.rowNumber = i;
 
       // length wise row heights
-      tableRow.rowHeights = Math.floor(
+      tableRow.rowHeights = (
         (((i - 1) * slopePercent) / 100) * tileLength +
-          shortHeight +
-          Number(0.00001)
-      );
+        shortHeight +
+        Number(0.00001)
+      ).toFixed(0);
 
       tableRow.pedConfig = pedConfig;
       tableRow.slopeDirection = slopeDirection;
@@ -462,7 +462,7 @@ function calculate_A() {
     result = tableParser_A(rowHeightsColumn);
     result.map((m) => {
       if (m.count) {
-        m.resultValue = m.count * Math.ceil(siteBreadth / tileBreadth + 1);
+        m.resultValue = m.count * (Math.ceil(siteBreadth / tileBreadth) + 1);
       } else {
         m.resultValue = 0;
       }
@@ -501,11 +501,11 @@ function calculate_A() {
       tableRow.rowNumber = i;
 
       // length wise row heights
-      tableRow.rowHeights = Math.floor(
+      tableRow.rowHeights = (
         (((i - 1) * slopePercent) / 100) * tileLength +
-          shortHeight +
-          Number(0.00001)
-      );
+        shortHeight +
+        Number(0.00001)
+      ).toFixed();
 
       tableRow.pedConfig = pedConfig;
       tableRow.slopeDirection = slopeDirection;
@@ -529,7 +529,7 @@ function calculate_A() {
     result = tableParser_A(rowHeightsColumn);
     result.map((m) => {
       if (m.count) {
-        m.resultValue = m.count * Math.ceil(siteLength / tileLength + 1);
+        m.resultValue = m.count * (Math.ceil(siteLength / tileLength) + 1);
       } else {
         m.resultValue = 0;
       }
@@ -568,11 +568,11 @@ function calculate_A() {
       tableRow.rowNumber = i;
 
       // length wise row heights
-      tableRow.rowHeights = Math.floor(
+      tableRow.rowHeights = (
         ((((i - 1) * slopePercent) / 100) * tileLength) / 2 +
-          shortHeight +
-          Number(0.00001)
-      );
+        shortHeight +
+        Number(0.00001)
+      ).toFixed(0);
 
       tableRow.pedConfig = pedConfig;
       tableRow.slopeDirection = slopeDirection;
@@ -618,11 +618,11 @@ function calculate_A() {
       tableRow.rowNumber = i;
 
       // Breadth wise row heights
-      tableRow.rowHeights = Math.floor(
+      tableRow.rowHeights = (
         Math.ceil(((((i - 1) * slopePercent) / 100) * tileLength) / 2) +
-          shortHeight +
-          Number(0.00001)
-      );
+        shortHeight +
+        Number(0.00001)
+      ).toFixed(0);
 
       tableRow.pedConfig = pedConfig;
       tableRow.slopeDirection = slopeDirection;
@@ -661,16 +661,110 @@ function calculate_A() {
 }
 //xxxxxxxxxxxxxxx-- End of function --xxxxxxxxxxxxxxxxxxxxx
 
+// Calculate Route - B
+// ==============================================================
+function calculate_B() {
+  // Intialization of all field variable
+  let siteLength = Number($("#site-length-B").val());
+  let siteBreadth = Number($("#site-breadth-B").val());
+  let alongJoist = Number($("#along-joist-B").val());
+  let betweenJoist = Number($("#between-joist-B").val());
+  let pedTotal = Number($("#pedstal-total").val());
+  let shortHeight = Number($("#dimensions-short-height").val());
+  let slopePercent = Number($("#slope-percentage").val());
+  let slopeDirection = Number($("#slope-direction").val());
+
+  // Initiazation of result table
+  let table = [];
+  let result;
+
+  // Slope direction "Length-wise"
+  //-----------------------------------------------------------------
+  if (slopeDirection == 1) {
+    // Length wise row numbers
+    let rowCount = Math.ceil(siteLength / alongJoist) + 1;
+    for (let i = 1; i <= rowCount; i++) {
+      let tableRow = {};
+      tableRow.rowNumber = i;
+
+      // Length wise row heights
+      tableRow.rowHeights = (
+        (((i - 1) * slopePercent) / 100) * alongJoist +
+        shortHeight +
+        Number(0.00001)
+      ).toFixed(0);
+      tableRow.slopeDirection = slopeDirection;
+      table.push(tableRow);
+    }
+
+    let rowHeightsColumn = table.map((m) => {
+      return m.rowHeights;
+    });
+
+    // tableParser_A was designed for route A, but it fitted with route B
+    result = tableParser_A(rowHeightsColumn);
+    result.map((m) => {
+      if (m.count) {
+        m.resultValue = m.count * (Math.ceil(siteBreadth / betweenJoist) + 1);
+      } else {
+        m.resultValue = 0;
+      }
+    });
+  }
+
+  // slope direction "breadth-wise"
+  // -------------------------------------------------------------------
+  if (slopeDirection == 2) {
+    // Cornersonly Breadth wise row numbers
+    let rowCount = Math.ceil(siteBreadth / betweenJoist) + 1;
+    for (let i = 1; i <= rowCount; i++) {
+      let tableRow = {};
+      tableRow.rowNumber = i;
+
+      // Breadth wise row heights
+      tableRow.rowHeights = (
+        (((i - 1) * slopePercent) / 100) * betweenJoist +
+        shortHeight +
+        Number(0.00001)
+      ).toFixed(0);
+      tableRow.slopeDirection = slopeDirection;
+      table.push(tableRow);
+    }
+
+    let rowHeightsColumn = table.map((m) => {
+      return m.rowHeights;
+    });
+
+    result = tableParser_A(rowHeightsColumn);
+    console.log(result);
+    result.map((m) => {
+      if (m.count) {
+        m.resultValue = m.count * (Math.ceil(siteLength / alongJoist) + 1);
+      } else {
+        m.resultValue = 0;
+      }
+    });
+  }
+
+  // DOMTableRender_A was designed for route A, but it fitted with route B
+  DOMTableRender_A(result);
+}
+//xxxxxxxxxxxxxxx-- End of function --xxxxxxxxxxxxxxxxxxxxx
+
 function calculateOnAnyChange() {
   $("#section-3 input, #section-3 select").on("change", function () {
     if (CURRENT_ROUTE == "A") {
       calculate_A();
+    } else {
+      calculate_B();
     }
   });
 
   $(".nav-next").on("click", function () {
     if (CURRENT_ROUTE == "A") {
       calculate_A();
+    } else {
+      calculate_B();
     }
   });
 }
