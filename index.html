@@ -20,9 +20,205 @@
 
 
     <div class="container">
-        <!-- <div class="main-calc-title">
-            <h1>Elmich - Pedstal Calculator</h1>
-        </div> -->
+
+
+
+        <!-- PDF Modal -->
+        <div class="modal fade" id="pdfModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="pdf-wrapper" id="result-pdf">
+
+                            <div class="pdf-section-table">
+
+                                <table>
+                                    <tr>
+                                        <th colspan="2">Site Dimension</th>
+                                        <th colspan="2">Tile dimensions</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="pdf-field-label">length <span class="label-colon">:</span></td>
+                                        <td class="pdf-field-number"> <span id="pdf-site-length">1240</span><span
+                                                class="pdf-number-unit">mm</span>
+                                        </td>
+                                        <td class="pdf-field-label">length <span class="label-colon">:</span></td>
+                                        <td class="pdf-field-number"> <span id="pdf-tile-length">1180</span><span
+                                                class="pdf-number-unit">mm</span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="pdf-field-label">Breadth <span class="label-colon">:</span></td>
+                                        <td class="pdf-field-number"><span id="pdf-site-breadth">1240</span><span
+                                                class="pdf-number-unit">mm</span>
+                                        </td>
+                                        <td class="pdf-field-label">Breadth <span class="label-colon">:</span></td>
+                                        <td class="pdf-field-number"> <span id="pdf-tile-breadth">1180</span><span
+                                                class="pdf-number-unit">mm</span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th colspan="2" id="pdf-ped-config-title">Elmich pedestal</br>configuration</th>
+                                        <td class="pdf-field-number" colspan="2" rowspan="2" id="pdf-ped-img"> <img
+                                                src="assets/img/CornersCentre.png" alt="">
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+
+                                        <td colspan="2"><span id="pdf-ped-config">corners only
+                                        </td>
+                                        <td></td>
+
+                                    </tr>
+
+                                    <tr>
+                                        <th colspan="2" id="ped-config-title">Calculations</th>
+                                        <th colspan="2">Height dimensions</th>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="pdf-field-label">Area <span class="label-colon">:</span></td>
+                                        <td class="pdf-field-number"><span id="pdf-calculation-area">1240</span><span
+                                                class="pdf-number-unit">m<sup>2</sup></span>
+                                        </td>
+                                        <td class="pdf-field-label">Shortest height <span class="label-colon">:</span>
+                                        </td>
+                                        <td class="pdf-field-number"> <span id="pdf-short-height">1180</span><span
+                                                class="pdf-number-unit">mm</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pdf-field-label">Pavers <span class="label-colon">:</span></td>
+                                        <td class="pdf-field-number"><span id="pdf-calculation-pavers">1240</span><span
+                                                class="pdf-number-unit">m<sup>2</sup></span>
+                                        </td>
+                                        <td class="pdf-field-label">
+                                        </td>
+                                        <td class="pdf-field-number">
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td id="pdf-typical-img" colspan="4"><img src="assets/img/typical-details-A.jpg"
+                                                alt="">
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th colspan="2">Slope Data</th>
+                                        <th colspan="2"></th>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="pdf-field-label">Slope Percentage <span class="label-colon">:</span>
+                                        </td>
+                                        <td class="pdf-field-number"><span id="pdf-slope-percentage">5</span><span
+                                                class="pdf-number-unit">%</span>
+                                        </td>
+                                        <td class="pdf-field-label"></td>
+                                        <td class="pdf-field-number">
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="pdf-field-label">Slope Direction <span class="label-colon">:</span>
+                                        </td>
+                                        <td class="pdf-field-number"><span id="pdf-slope-direction">Length-wise
+                                        </td>
+                                        <td class="pdf-field-label"></td>
+                                        <td class="pdf-field-number">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table id="pdf-result-table">
+
+                                    <tr>
+                                        <th>Model</th>
+                                        <th>Height Range</th>
+                                        <th>Quantity</th>
+                                    </tr>
+
+                                    <tr>
+                                        <td>VersiJack<sup>®</sup> F1</td>
+                                        <td>37 - 50 mm</td>
+                                        <td class="result-qty" id="pdf-result-f-1">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>VersiJack<sup>®</sup> F2</td>
+                                        <td>50 - 74 mm</td>
+                                        <td class="result-qty" id="pdf-result-f-2">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>VersiJack<sup>®</sup> F3</td>
+                                        <td>74 - 117 mm</td>
+                                        <td class="result-qty" id="pdf-result-f-3">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>VersiJack<sup>®</sup> F4</td>
+                                        <td>117 - 201 mm</td>
+                                        <td class="result-qty" id="pdf-result-f-4">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>VersiJack<sup>®</sup> F5</td>
+                                        <td>196 - 281 mm</td>
+                                        <td class="result-qty" id="pdf-result-f-5">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>VersiJack<sup>®</sup> F6</td>
+                                        <td>277 - 446 mm</td>
+                                        <td class="result-qty" id="pdf-result-f-6">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>VersiJack<sup>®</sup> F7</td>
+                                        <td>356 - 524 mm</td>
+                                        <td class="result-qty" id="pdf-result-f-7">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>VersiJack<sup>®</sup> F8</td>
+                                        <td>437 - 690 mm</td>
+                                        <td class="result-qty" id="pdf-result-f-8">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>VersiJack<sup>®</sup> F9</td>
+                                        <td>516 - 768 mm</td>
+                                        <td class="result-qty" id="pdf-result-f-9">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>VersiJack<sup>®</sup> F10</td>
+                                        <td>596 - 934 mm</td>
+                                        <td class="result-qty" id="pdf-result-f-10">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>VersiJack<sup>®</sup> F11</td>
+                                        <td>675 - 1014 mm</td>
+                                        <td class="result-qty" id="pdf-result-f-11">0</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" data-target="pdf" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="main-calc-wrap">
             <div class="section-indicator" id="indicator-btn-wrap">
                 <a class="section-indicator-btn active" href="" id="indicator-1"><span>1</span></a>
@@ -84,7 +280,8 @@
                                                 <span class="input-label-semicolon">:</span>
                                             </div>
                                             <div class="single-input-field-wrap">
-                                                <input type="number" name="site-length-A" id="site-length-A">
+                                                <input class="required" type="number" name="site-length-A"
+                                                    id="site-length-A">
                                                 <a class="input-unit"><span>mm</span></a>
                                             </div>
                                         </div>
@@ -94,7 +291,8 @@
                                                 <span class="input-label-semicolon">:</span>
                                             </div>
                                             <div class="single-input-field-wrap">
-                                                <input type="number" name="site-breadth-A" id="site-breadth-A">
+                                                <input class="required" type="number" name="site-breadth-A"
+                                                    id="site-breadth-A">
                                                 <a class="input-unit"><span>mm</span></a>
                                             </div>
                                         </div>
@@ -114,7 +312,8 @@
                                                 <span class="input-label-semicolon">:</span>
                                             </div>
                                             <div class="single-input-field-wrap">
-                                                <input type="number" name="tile-length-A" id="tile-length-A">
+                                                <input class="required" type="number" name="tile-length-A"
+                                                    id="tile-length-A">
                                                 <a class="input-unit"><span>mm</span></a>
                                             </div>
                                         </div>
@@ -124,7 +323,8 @@
                                                 <span class="input-label-semicolon">:</span>
                                             </div>
                                             <div class="single-input-field-wrap">
-                                                <input type="number" name="tile-breadth-A" id="tile-breadth-A">
+                                                <input class="required" type="number" name="tile-breadth-A"
+                                                    id="tile-breadth-A">
                                                 <a class="input-unit"><span>mm</span></a>
                                             </div>
                                         </div>
@@ -257,7 +457,8 @@
                                                 <span class="input-label-semicolon">:</span>
                                             </div>
                                             <div class="single-input-field-wrap">
-                                                <input type="number" name="site-length-B" id="site-length-B">
+                                                <input class="required" type="number" name="site-length-B"
+                                                    id="site-length-B">
                                                 <a class="input-unit"><span>mm</span></a>
                                             </div>
                                         </div>
@@ -268,7 +469,8 @@
                                                 <span class="input-label-semicolon">:</span>
                                             </div>
                                             <div class="single-input-field-wrap">
-                                                <input type="number" name="site-breadth-B" id="site-breadth-B">
+                                                <input class="required" type="number" name="site-breadth-B"
+                                                    id="site-breadth-B">
                                                 <a class="input-unit"><span>mm</span></a>
                                             </div>
                                         </div>
@@ -287,7 +489,8 @@
                                                 <span class="input-label-semicolon">:</span>
                                             </div>
                                             <div class="single-input-field-wrap">
-                                                <input type="number" name="along-joist-B" id="along-joist-B">
+                                                <input class="required" type="number" name="along-joist-B"
+                                                    id="along-joist-B">
                                                 <a class="input-unit"><span>mm</span></a>
                                             </div>
                                         </div>
@@ -297,7 +500,8 @@
                                                 <span class="input-label-semicolon">:</span>
                                             </div>
                                             <div class="single-input-field-wrap">
-                                                <input type="number" name="between-joist-B" id="between-joist-B">
+                                                <input class="required" type="number" name="between-joist-B"
+                                                    id="between-joist-B">
                                                 <a class="input-unit"><span>mm</span></a>
                                             </div>
                                         </div>
@@ -432,9 +636,13 @@
                                                 <span class="input-label-semicolon">:</span>
                                             </div>
                                             <div class="single-input-field-wrap">
+
+
                                                 <input type="number" name="dimensions-short-height"
                                                     id="dimensions-short-height">
                                                 <a class="input-unit"><span>mm</span></a>
+                                                <h6 class="input-note">Please input equal or more than 37mm</h6>
+
                                             </div>
                                         </div>
                                     </div>
@@ -490,6 +698,7 @@
 
 
                             </div>
+                            <button class="btn-pdf" data-target="pdf">download pdf</button>
                         </div>
 
 
@@ -565,6 +774,8 @@
                                         <td class="result-qty" id="result-f-11">0</td>
                                     </tr>
                                 </table>
+
+
                             </div>
                         </div>
                     </div>
@@ -578,12 +789,14 @@
                 <button class="nav-btn nav-next" data-target="next">Next</button>
             </div>
 
+
+
         </div>
     </div>
     <script src="plugins/jquery/jquery.min.js"></script>
-    <script src="plugins/accounting/accounting.min.js"></script>
     <script src="plugins/popper/popper.min.js"></script>
     <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="plugins/html2pdf/html2pdf.js"></script>
     <script src="functions.js?v=1.0.1"></script>
     <script src="main.js?v=1.0.1"></script>
 

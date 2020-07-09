@@ -17,8 +17,75 @@ function init() {
 
   // Section-3 default shortest height is 37mm
   $("#dimensions-short-height").val(37);
+  $("#dimensions-short-height").on("change", function () {
+    let value = $(this).val();
+    if (value < 37) $(this).val(37);
+  });
 }
 //xxxxxxxxxxxxxxx-- End of function --xxxxxxxxxxxxxxxxxxxxx
+
+// Helper functions to validate the section's required field
+//=========================================================
+
+function isEmpty(value) {
+  let validate =
+    value == null ||
+    value == "none" ||
+    value == "" ||
+    value == 0.0 ||
+    value == undefined ||
+    value == NaN;
+  if (!validate) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+function validate(section) {
+  let requiredFields = section.find(".required");
+  let filedCount = requiredFields.length;
+  let validationCount = 0;
+
+  for (field of requiredFields) {
+    let value = $(field).val();
+    if (!isEmpty(value)) {
+      validationCount += 1;
+      $(field).removeClass("not-validated");
+      $(field).siblings(".validation-error-msg").remove();
+    } else {
+      $(field).addClass("not-validated");
+      let msg = `<h6 class="validation-error-msg">This field is required</h6>`;
+      $(msg).insertAfter($(field));
+    }
+  }
+
+  return filedCount == validationCount;
+}
+
+// $("button[data-target=next]").on("click", function () {
+//   validate($("#section-2A"));
+// });
+
+//xxxxxxxxxxxxxxx-- End of function --xxxxxxxxxxxxxxxxxxxxx
+
+//===================================================
+// Removing unwanted required warning for dynamically
+// generated fields
+//===================================================
+function removeUnwantedWarning() {
+  let allRequired = $(".required");
+  $("input, select").on("change", function () {
+    for (field of allRequired) {
+      let value = $(field).val();
+      if (!isEmpty(value)) {
+        $(field).removeClass("not-validated");
+        $(field).siblings(".validation-error-msg").remove();
+      }
+    }
+  });
+}
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx--End of function--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 //Function to implement tabbed view layout
 //===================================================
@@ -80,6 +147,10 @@ function tabbedView() {
     // to the top of the form
     $(window).scrollTop($("#indicator-btn-wrap").offset().top);
 
+    if (target == "next" && !validate($(`#section-2${route}`))) {
+      return;
+    }
+
     $(".section-indicator-btn").removeClass("active");
 
     if (target == "next") {
@@ -106,6 +177,10 @@ function tabbedView() {
       $(".nav-back").addClass("inactive");
       $(".nav-btn").css("display", "none");
       $("input").val("");
+      $("#dimensions-short-height").val(37);
+      $("#slope-percentage").val(1);
+      $("#slope-direction").val(1);
+      $("#pedestal-config-A").val(1);
     } else {
       $(".nav-back").removeClass("inactive");
       $(".nav-btn").css("display", "inline-block");
@@ -273,33 +348,11 @@ function dynamicChanges_B() {
       }
     }
   );
-
-  // Section-3 slope percent change to zero make shortest height 100mm
-  $("#slope-percentage").on("change", function () {
-    let value = $(this).val();
-    if (value == 0) {
-      $("#dimensions-short-height").val(100);
-    }
-  });
 }
 //xxxxxxxxxxxxxxx-- End of function --xxxxxxxxxxxxxxxxxxxxx
 
 // Helper function to calculate result tables Qauntity column value
 //==================================================================
-
-function tableOutput(value, config) {
-  let result;
-
-  switch (true) {
-    case value >= 37 && value <= 50:
-      result = Math.round(config.siteBreadth / config.tileBreadth) + 1;
-      $(`#result-f-1`).val(result);
-      break;
-  }
-
-  return result;
-}
-
 function tableParser_A(column) {
   let ranges = [
     { min: 37, max: 50 },
@@ -337,7 +390,10 @@ function tableParser_A(column) {
   }
   return tableCells;
 }
+//xxxxxxxxxxxxxxx-- End of function --xxxxxxxxxxxxxxxxxxxxx
 
+// Helper function to calculate result tables Qauntity column value
+//==================================================================
 function DOMTableRender_A(tableData) {
   for (let i = 0; i < tableData.length; i++) {
     let resultCell = $(`#${tableData[i].name}`);
@@ -345,6 +401,7 @@ function DOMTableRender_A(tableData) {
     resultCell.text(resultValue);
   }
 }
+//xxxxxxxxxxxxxxx-- End of function --xxxxxxxxxxxxxxxxxxxxx
 
 // Calculate Route - A
 // ==============================================================
@@ -363,6 +420,13 @@ function calculate_A() {
   // Initiazation of result table
   let table = [];
   let result;
+
+  // If required values are not received then funciton will return
+  let condition =
+    siteLength > 0 && siteBreadth > 0 && tileLength > 0 && tileBreadth > 0;
+  if (!condition) {
+    return;
+  }
 
   // if slope percent is zero then shortest heights become 100mm
   // and total pedestal value will go to f3
@@ -610,7 +674,6 @@ function calculate_A() {
     });
 
     result = tableParser_A(rowHeightsColumn);
-    console.log(result);
     result.map((m) => {
       if (m.count) {
         m.resultValue =
@@ -670,8 +733,24 @@ function calculate_A() {
     });
   }
 
+  // If the result's quantity is less than pedestal total
+  // It means it is outside of range due to highest shortest value
+  // In that case, to show user a message, belo code works
+  let totalResult = result
+    .map((m) => Number(m.resultValue))
+    .reduce((a, b) => a + b);
+
+  if (totalResult < pedTotal) {
+    let msg = `<h6 class="incorrect-result-msg">Please decrease shortest height to get the correct result</h6>`;
+    $("#result-table").addClass("incorrect-result");
+    $(msg).insertBefore($("#result-table"));
+    console.log(totalResult);
+  } else {
+    $("#result-table").removeClass("incorrect-result");
+    $(".incorrect-result-msg").remove();
+  }
+  // Render results for output table
   DOMTableRender_A(result);
-  console.log(table);
 }
 //xxxxxxxxxxxxxxx-- End of function --xxxxxxxxxxxxxxxxxxxxx
 
@@ -691,6 +770,13 @@ function calculate_B() {
   // Initiazation of result table
   let table = [];
   let result;
+
+  // If required values are not received then funciton will return
+  let condition =
+    siteLength > 0 && siteBreadth > 0 && alongJoist > 0 && betweenJoist > 0;
+  if (!condition) {
+    return;
+  }
 
   // if slope percent is zero then shortest heights become 100mm
   // and total pedestal value will go to f3
@@ -763,11 +849,29 @@ function calculate_B() {
     });
   }
 
-  // DOMTableRender_A was designed for route A, but it fitted with route B
+  // If the result's quantity is less than pedestal total
+  // It means it is outside of range due to highest shortest value
+  // In that case, to show user a message, belo code works
+  let totalResult = result
+    .map((m) => Number(m.resultValue))
+    .reduce((a, b) => a + b);
+
+  if (totalResult < pedTotal) {
+    let msg = `<h6 class="incorrect-result-msg">Please decrease shortest height to get the correct result</h6>`;
+    $("#result-table").addClass("incorrect-result");
+    $(msg).insertBefore($("#result-table"));
+    console.log(totalResult);
+  } else {
+    $("#result-table").removeClass("incorrect-result");
+    $(".incorrect-result-msg").remove();
+  }
+  // Render results for output table
   DOMTableRender_A(result);
 }
 //xxxxxxxxxxxxxxx-- End of function --xxxxxxxxxxxxxxxxxxxxx
 
+// Function to call calculate function based on any changes
+// and based on current route.
 function calculateOnAnyChange() {
   $("#section-3 input, #section-3 select").on("change", function () {
     if (CURRENT_ROUTE == "A") {
@@ -785,3 +889,4 @@ function calculateOnAnyChange() {
     }
   });
 }
+//xxxxxxxxxxxxxxx-- End of function --xxxxxxxxxxxxxxxxxxxxx

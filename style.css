@@ -37,6 +37,26 @@ body {
   padding-bottom: 15px;
 }
 
+.btn-pdf {
+  color: white;
+  height: 40px;
+  text-transform: uppercase;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  background-color: #fe5700;
+  border: none;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.btn-pdf:focus {
+  outline: none;
+}
+
+.btn-pdf:hover {
+  background-color: #ff7832;
+}
+
 .nav-buttons {
   width: 100%;
   text-align: center;
@@ -351,6 +371,12 @@ body {
           align-items: center;
 }
 
+@media (max-width: 768px) {
+  .single-input-label-wrap {
+    width: 100%;
+  }
+}
+
 .single-input-label-wrap label {
   margin-bottom: 0;
   color: #676f7f;
@@ -389,6 +415,16 @@ body {
   .single-input-field-wrap {
     width: 100%;
   }
+}
+
+.single-input-field-wrap .single-input-el-wrap {
+  position: relative;
+}
+
+.single-input-field-wrap .input-note {
+  font-size: 12px;
+  margin-bottom: 0;
+  color: #fe5700;
 }
 
 .single-input-field-wrap input,
@@ -459,6 +495,39 @@ body {
   color: #727272;
   padding-right: 10px;
   padding-bottom: 5px;
+}
+
+.not-validated {
+  outline: none;
+  border-color: #eb7479 !important;
+  -webkit-box-shadow: 0 0 0 1px #eb7479 inset !important;
+          box-shadow: 0 0 0 1px #eb7479 inset !important;
+}
+
+.validation-error-msg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 0;
+  font-size: 12px;
+  color: #eb7479;
+  -webkit-transform: translateY(105%);
+          transform: translateY(105%);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.input-note {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 0;
+  font-size: 12px;
+  color: #fe5700;
+  -webkit-transform: translateY(105%);
+          transform: translateY(105%);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .single-input-field-wrap.pedstal-config-wrap {
@@ -603,6 +672,11 @@ body {
 
 .result-table-wrapper {
   width: 100%;
+  position: relative;
+}
+
+.result-table-wrapper .input-group-title {
+  padding-bottom: 35px;
 }
 
 #result-table {
@@ -627,5 +701,67 @@ body {
 .result-qty {
   font-weight: bold;
   font-size: 18px !important;
+}
+
+.incorrect-result {
+  outline: 2px solid #d92027 !important;
+  -webkit-box-shadow: 0 0 0 1px #eb7479 inset !important;
+          box-shadow: 0 0 0 1px #eb7479 inset !important;
+}
+
+.incorrect-result-msg {
+  font-size: 12px;
+  color: #d92027;
+  font-weight: bold;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  position: absolute;
+  left: 0;
+  top: 50px;
+}
+
+.pdf-section-table {
+  width: 100%;
+}
+
+.pdf-section-table table {
+  width: 100%;
+}
+
+.pdf-section-table table th {
+  font-size: 14px;
+  font-weight: bold;
+  color: #434343;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+.pdf-section-table table td {
+  font-size: 12px;
+  color: #7f6f7f;
+  padding-bottom: 8px;
+  vertical-align: top;
+  position: relative;
+}
+
+.label-colon {
+  position: absolute;
+  right: 0;
+  font-weight: bold;
+}
+
+.pdf-field-number {
+  font-size: 14px !important;
+  font-weight: bold;
+  padding-left: 15px;
+}
+
+#pdf-ped-img img {
+  width: 110px;
+  height: 110px;
+}
+
+#pdf-typical-img img {
+  width: 100%;
 }
 /*# sourceMappingURL=style.css.map */
