@@ -16,10 +16,33 @@ function init() {
   });
 
   // Section-3 default shortest height is 37mm
-  $("#dimensions-short-height").val(37);
+  $("#dimensions-short-height").val("");
   $("#dimensions-short-height").on("change", function () {
     let value = $(this).val();
-    if (value < 37) $(this).val(37);
+    if (value < 37) {
+      $(this).addClass("not-validated");
+      $(this).siblings("h6").css({ color: "#d92027" });
+    } else {
+      $(this).removeClass("not-validated");
+      $(this).siblings("h6").css({ color: "#fe5700" });
+    }
+  });
+
+  $("#dimensions-short-height").on("blur", function () {
+    let value = $(this).val();
+    if (value < 37) {
+      $(this).addClass("not-validated");
+      $(this).siblings("h6").css({ color: "#d92027" });
+    } else {
+      $(this).removeClass("not-validated");
+      $(this).siblings("h6").css({ color: "#fe5700" });
+
+      if (CURRENT_ROUTE == "A") {
+        calculate_A();
+      } else {
+        calculate_B();
+      }
+    }
   });
 }
 //xxxxxxxxxxxxxxx-- End of function --xxxxxxxxxxxxxxxxxxxxx
@@ -177,10 +200,12 @@ function tabbedView() {
       $(".nav-back").addClass("inactive");
       $(".nav-btn").css("display", "none");
       $("input").val("");
-      $("#dimensions-short-height").val(37);
-      $("#slope-percentage").val(1);
+      $("#dimensions-short-height").val("");
+      $("#slope-percentage").val(0);
       $("#slope-direction").val(1);
       $("#pedestal-config-A").val(1);
+      $("#dimensions-short-height").removeClass("not-validated");
+      $("#dimensions-short-height").siblings("h6").css({ color: "#fe5700" });
     } else {
       $(".nav-back").removeClass("inactive");
       $(".nav-btn").css("display", "inline-block");
@@ -751,6 +776,7 @@ function calculate_A() {
   }
   // Render results for output table
   DOMTableRender_A(result);
+  console.log("executed");
 }
 //xxxxxxxxxxxxxxx-- End of function --xxxxxxxxxxxxxxxxxxxxx
 
@@ -873,20 +899,24 @@ function calculate_B() {
 // Function to call calculate function based on any changes
 // and based on current route.
 function calculateOnAnyChange() {
-  $("#section-3 input, #section-3 select").on("change", function () {
-    if (CURRENT_ROUTE == "A") {
-      calculate_A();
-    } else {
-      calculate_B();
+  $("#section-3 input:not(#dimensions-short-height), #section-3 select").on(
+    "change",
+    function () {
+      let shortHeight = $("#dimensions-short-height").val();
+      if (CURRENT_ROUTE == "A" && shortHeight >= 37) {
+        calculate_A();
+      } else if (CURRENT_ROUTE == "B" && shortHeight >= 37) {
+        calculate_B();
+      }
     }
-  });
+  );
 
-  $(".nav-next").on("click", function () {
-    if (CURRENT_ROUTE == "A") {
-      calculate_A();
-    } else {
-      calculate_B();
-    }
-  });
+  // $(".nav-next").on("click", function () {
+  //   if (CURRENT_ROUTE == "A") {
+  //     calculate_A();
+  //   } else {
+  //     calculate_B();
+  //   }
+  // });
 }
 //xxxxxxxxxxxxxxx-- End of function --xxxxxxxxxxxxxxxxxxxxx
