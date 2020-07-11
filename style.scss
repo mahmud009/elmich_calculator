@@ -45,14 +45,12 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  font-family: "Helvetica Neue", sans-serif;
-}
-
 .main-calc-wrap {
   width: 100%;
   // border: 1px solid #5a5a5a;
   margin-top: 30px;
+  font-family: "Helvetica Neue", sans-serif;
+  background-color: white;
 }
 
 .main-calc-title {
@@ -665,6 +663,24 @@ body {
   padding-left: 15px;
 }
 
+.btn-email {
+  color: white;
+
+  height: 40px;
+  text-transform: uppercase;
+  transition: all 0.4s ease;
+  background-color: #fe5700;
+  border: none;
+  font-size: 12px;
+  padding: 10px;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background-color: lighten(#fe5700, 10%);
+  }
+}
+
 #pdf-ped-img {
   img {
     width: 110px;
@@ -676,4 +692,15 @@ body {
   img {
     width: 100%;
   }
+}
+
+.action-btn-spinner {
+  width: 15px;
+  height: 15px;
+  border-width: 1px;
+  margin-left: 5px;
+}
+
+#mail-submit .spinner-border {
+  margin-bottom: 3px;
 }

@@ -920,3 +920,98 @@ function calculateOnAnyChange() {
   // });
 }
 //xxxxxxxxxxxxxxx-- End of function --xxxxxxxxxxxxxxxxxxxxx
+
+// Function to generate pdf file
+function generatePdf() {
+  // PDF functionality
+  $("button[data-target=pdf]").on("click", function (e) {
+    e.preventDefault();
+    let element = document.getElementById("result-pdf");
+    let pdfWorker = html2pdf();
+    // $(this).append(spinner);
+
+    pdfWorker
+      .from(element)
+      .set({
+        image: { type: "png", quality: 1 },
+        html2canvas: { scale: 2 },
+        margin: [1, 1],
+        jsPDF: {
+          unit: "in",
+        },
+      })
+      .outputPdf()
+      .then((res) => {
+        // $(".result-action-buttons button .spinner-border").remove();
+      })
+      .save("sample.pdf");
+  });
+}
+
+//xxxxxxxxxxxxxxx-- End of function --xxxxxxxxxxxxxxxxxxxxx
+
+// Function to generate pdf file and send using mail
+function sendEmail() {
+  let spinner = `<div class="spinner-border action-btn-spinner"
+role="status">
+</div>`;
+  $("#send-email-form").on("submit", function (e) {
+    e.preventDefault();
+    $("#mail-submit").append(spinner);
+    let pdfData;
+
+    let element = document.getElementById("result-pdf");
+    let pdfWorker = html2pdf();
+    pdfWorker
+      .from(element)
+      .set({
+        image: { type: "png", quality: 1 },
+        html2canvas: { scale: 1 },
+        margin: [1, 1],
+        jsPDF: {
+          unit: "in",
+        },
+      })
+      .outputPdf()
+      .then((res) => {
+        // console.log(res);
+        Email.send({
+          // SecureToken: "a2cd447b-0977-4d4d-a376-c709f8682914",
+          // Port: "25",
+          // TLS: "STARTTLS",
+
+          Host: "mail.okapia-mobile.com",
+          Port: "587",
+          Username: "mahmudur@okapia-mobile.com",
+          Password: "Mahmud@1992",
+          To: $("#email-address").val(),
+          From: "mahmudur@okapia-mobile.com",
+          Subject: "Pedestal Calculation",
+          Body: "And this is the body",
+          Attachments: [
+            {
+              name: "pedestal_calculation.pdf",
+              data: btoa(res),
+            },
+          ],
+        })
+          .then((message) => {
+            console.log(message);
+            $("#send-email-modal").modal("hide");
+            $("#mail-submit .spinner-border").remove();
+
+            setTimeout(() => {
+              if (message == "OK") {
+                let msg = "Mail send succesfull, please check your inbox";
+                $("#mail-status .modal-body p").text(msg);
+              } else {
+                $("#mail-status .modal-body p").text(message);
+              }
+              $("#mail-status").modal();
+            }, 500);
+          })
+          .catch((err) => console.log(err));
+      });
+  });
+}
+//xxxxxxxxxxxxxxx-- End of function --xxxxxxxxxxxxxxxxxxxxx

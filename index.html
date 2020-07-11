@@ -21,6 +21,52 @@
 
     <div class="container">
 
+        <!-- Email modal-->
+        <div class="modal fade" id="send-email-modal" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Send Email</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="send-email-form">
+                            <label for="email">Enter your email address</label>
+                            <input type="email" id="email-address" placeholder="Enter your email address" name="email">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary" id="mail-submit">Send</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="mail-status" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Mail Sending Status</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
         <!-- PDF Modal -->
@@ -695,7 +741,12 @@
 
 
                             </div>
-                            <button class="btn-pdf" data-target="pdf">download pdf</button>
+                            <div class="action-btn-wrapper">
+                                <button class="btn-pdf action-btn" data-target="pdf">download pdf</button>
+                                <button class="btn-email action-btn" data-toggle="modal"
+                                    data-target="#send-email-modal">Email
+                                    PDF</button>
+                            </div>
                         </div>
 
 
@@ -785,19 +836,15 @@
                 <button class="nav-btn nav-back" data-target="back">Back</button>
                 <button class="nav-btn nav-next" data-target="next">Next</button>
             </div>
-
-
-
         </div>
     </div>
     <script src="plugins/jquery/jquery.min.js"></script>
     <script src="plugins/popper/popper.min.js"></script>
     <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="plugins/html2pdf/html2pdf.js"></script>
+    <script src="plugins/smtpjs/smtp.js"></script>
     <script src="functions.js?v=1.0.1"></script>
     <script src="main.js?v=1.0.1"></script>
-
-
 </body>
 
 </html>
