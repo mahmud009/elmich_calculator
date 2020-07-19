@@ -4,8 +4,9 @@ $(function () {
   dynamicChanges_B();
   tabbedView();
   calculateOnAnyChange();
+
   removeUnwantedWarning();
-  generatePdf();
+  generatePdf_A();
   sendEmail();
 
   $(".btn-email").on("click", function () {

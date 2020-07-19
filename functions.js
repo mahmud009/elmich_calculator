@@ -154,6 +154,12 @@ function tabbedView() {
     $(window).scrollTop($("#indicator-btn-wrap").offset().top);
 
     $(`#indicator-${index + 1}`).addClass("active");
+
+    if (route == "A") {
+      $("#section-3 #section-paving-img").css({ opacity: "1" });
+    } else {
+      $("#section-3 #section-decking-img").css({ opacity: "1" });
+    }
   });
 
   // After clicking root selector, nav buttons will be available
@@ -922,11 +928,11 @@ function calculateOnAnyChange() {
 //xxxxxxxxxxxxxxx-- End of function --xxxxxxxxxxxxxxxxxxxxx
 
 // Function to generate pdf file
-function generatePdf() {
+function generatePdf_A() {
   // PDF functionality
   $("button[data-target=pdf]").on("click", function (e) {
     e.preventDefault();
-    let element = document.getElementById("result-pdf");
+    let element = document.getElementById("result-pdf-A");
     let pdfWorker = html2pdf();
     // $(this).append(spinner);
 

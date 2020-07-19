@@ -24,7 +24,7 @@
         <!-- Email modal-->
         <div class="modal fade" id="send-email-modal" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">                    
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle">Send Email</h5>
@@ -68,9 +68,10 @@
             </div>
         </div>
 
+        
 
         <!-- PDF Modal -->
-        <div class="modal fade" id="pdfModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="pdfModal-A" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -81,10 +82,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="pdf-wrapper" id="result-pdf">
-
+                        <div class="pdf-wrapper" id="result-pdf-A">
                             <div class="pdf-section-table">
-
                                 <table>
                                     <tr>
                                         <th colspan="2">Site Dimension</th>
@@ -92,36 +91,36 @@
                                     </tr>
                                     <tr>
                                         <td class="pdf-field-label">length <span class="label-colon">:</span></td>
-                                        <td class="pdf-field-number"> <span id="pdf-site-length">1240</span><span
+                                        <td class="pdf-field-number"> <span id="pdf-site-length-A">1240</span><span
                                                 class="pdf-number-unit">mm</span>
                                         </td>
                                         <td class="pdf-field-label">length <span class="label-colon">:</span></td>
-                                        <td class="pdf-field-number"> <span id="pdf-tile-length">1180</span><span
+                                        <td class="pdf-field-number"> <span id="pdf-tile-length-A">1180</span><span
                                                 class="pdf-number-unit">mm</span>
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td class="pdf-field-label">Breadth <span class="label-colon">:</span></td>
-                                        <td class="pdf-field-number"><span id="pdf-site-breadth">1240</span><span
+                                        <td class="pdf-field-number"><span id="pdf-site-breadth-A">1240</span><span
                                                 class="pdf-number-unit">mm</span>
                                         </td>
                                         <td class="pdf-field-label">Breadth <span class="label-colon">:</span></td>
-                                        <td class="pdf-field-number"> <span id="pdf-tile-breadth">1180</span><span
+                                        <td class="pdf-field-number"> <span id="pdf-tile-breadth-A">1180</span><span
                                                 class="pdf-number-unit">mm</span>
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <th colspan="2" id="pdf-ped-config-title">Elmich pedestal</br>configuration</th>
-                                        <td class="pdf-field-number" colspan="2" rowspan="2" id="pdf-ped-img"> <img
-                                                src="assets/img/CornersCentre.png" alt="">
+                                        <td id="pdf-ped-confing-img" colspan="2" rowspan="2" id="pdf-ped-img"> 
+                                            <img src="assets/img/CornersCentre.png" alt="">
                                         </td>
                                     </tr>
 
                                     <tr>
 
-                                        <td colspan="2"><span id="pdf-ped-config">corners only
+                                        <td colspan="2"><span id="pdf-ped-config-A">corners only
                                         </td>
                                         <td></td>
 
@@ -134,18 +133,18 @@
 
                                     <tr>
                                         <td class="pdf-field-label">Area <span class="label-colon">:</span></td>
-                                        <td class="pdf-field-number"><span id="pdf-calculation-area">1240</span><span
+                                        <td class="pdf-field-number"><span id="pdf-calculation-area-A">1240</span><span
                                                 class="pdf-number-unit">m<sup>2</sup></span>
                                         </td>
                                         <td class="pdf-field-label">Shortest height <span class="label-colon">:</span>
                                         </td>
-                                        <td class="pdf-field-number"> <span id="pdf-short-height">1180</span><span
+                                        <td class="pdf-field-number"> <span id="pdf-short-height-A">1180</span><span
                                                 class="pdf-number-unit">mm</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="pdf-field-label">Pavers <span class="label-colon">:</span></td>
-                                        <td class="pdf-field-number"><span id="pdf-calculation-pavers">1240</span><span
+                                        <td class="pdf-field-number"><span id="pdf-calculation-pavers-A">1240</span><span
                                                 class="pdf-number-unit">m<sup>2</sup></span>
                                         </td>
                                         <td class="pdf-field-label">
@@ -154,32 +153,29 @@
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td id="pdf-typical-img" colspan="4"><img src="assets/img/typical-details-A.jpg"
-                                                alt="">
-                                        </td>
-                                    </tr>
+                                   
 
                                     <tr>
                                         <th colspan="2">Slope Data</th>
-                                        <th colspan="2"></th>
+                                        <th colspan="2">
+                                            <!-- <img src="assets/img/Section Detail for Paving.png" alt=""> -->
+                                        </th>
                                     </tr>
 
                                     <tr>
                                         <td class="pdf-field-label">Slope Percentage <span class="label-colon">:</span>
                                         </td>
-                                        <td class="pdf-field-number"><span id="pdf-slope-percentage">5</span><span
+                                        <td class="pdf-field-number"><span id="pdf-slope-percentage-A">5</span><span
                                                 class="pdf-number-unit">%</span>
                                         </td>
-                                        <td class="pdf-field-label"></td>
-                                        <td class="pdf-field-number">
-                                        </td>
+                                        <td id="pdf-paving-img" colspan="2" rowspan="2"><img src="assets/img/Section Detail for Paving.png" alt=""></td>
+                                        
                                     </tr>
 
                                     <tr>
                                         <td class="pdf-field-label">Slope Direction <span class="label-colon">:</span>
                                         </td>
-                                        <td class="pdf-field-number"><span id="pdf-slope-direction">Length-wise
+                                        <td class="pdf-field-number"><span id="pdf-slope-direction-A">Length-wise
                                         </td>
                                         <td class="pdf-field-label"></td>
                                         <td class="pdf-field-number">
@@ -189,65 +185,48 @@
                                 <table id="pdf-result-table">
 
                                     <tr>
-                                        <th>Model</th>
-                                        <th>Height Range</th>
-                                        <th>Quantity</th>
+                                        <th>VersiJack<sup>®</sup> Model</th>
+                                        <td>F1</td>
+                                        <td>F2</td>
+                                        <td>F3</td>
+                                        <td>F4</td>
+                                        <td>F5</td>
+                                        <td>F6</td>
+                                        <td>F7</td>
+                                        <td>F8</td>
+                                        <td>F9</td>
+                                        <td>F10</td>
+                                        <td>F11</td>
                                     </tr>
 
                                     <tr>
-                                        <td>VersiJack<sup>®</sup> F1</td>
-                                        <td>37 - 50 mm</td>
-                                        <td class="result-qty" id="pdf-result-f-1">0</td>
+                                        <th>Height Range (mm)</th>
+                                        <td>37 - 50</td>
+                                        <td>50 - 74</td>
+                                        <td>74 - 117</td>
+                                        <td>117 - 201</td>
+                                        <td>196 - 281</td>
+                                        <td>356 - 524</td>
+                                        <td>277 - 446</td>
+                                        <td>437 - 690</td>
+                                        <td>596 - 934</td>
+                                        <td>516 - 768</td>
+                                        <td>675 - 1014</td>
                                     </tr>
+
                                     <tr>
-                                        <td>VersiJack<sup>®</sup> F2</td>
-                                        <td>50 - 74 mm</td>
-                                        <td class="result-qty" id="pdf-result-f-2">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>VersiJack<sup>®</sup> F3</td>
-                                        <td>74 - 117 mm</td>
-                                        <td class="result-qty" id="pdf-result-f-3">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>VersiJack<sup>®</sup> F4</td>
-                                        <td>117 - 201 mm</td>
-                                        <td class="result-qty" id="pdf-result-f-4">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>VersiJack<sup>®</sup> F5</td>
-                                        <td>196 - 281 mm</td>
-                                        <td class="result-qty" id="pdf-result-f-5">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>VersiJack<sup>®</sup> F6</td>
-                                        <td>277 - 446 mm</td>
-                                        <td class="result-qty" id="pdf-result-f-6">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>VersiJack<sup>®</sup> F7</td>
-                                        <td>356 - 524 mm</td>
-                                        <td class="result-qty" id="pdf-result-f-7">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>VersiJack<sup>®</sup> F8</td>
-                                        <td>437 - 690 mm</td>
-                                        <td class="result-qty" id="pdf-result-f-8">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>VersiJack<sup>®</sup> F9</td>
-                                        <td>516 - 768 mm</td>
-                                        <td class="result-qty" id="pdf-result-f-9">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>VersiJack<sup>®</sup> F10</td>
-                                        <td>596 - 934 mm</td>
-                                        <td class="result-qty" id="pdf-result-f-10">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>VersiJack<sup>®</sup> F11</td>
-                                        <td>675 - 1014 mm</td>
-                                        <td class="result-qty" id="pdf-result-f-11">0</td>
+                                        <th>Quantity</th>
+                                        <td class="result-qty" id="result-f-1-A">0</td>
+                                        <td class="result-qty" id="result-f-2-A">0</td>
+                                        <td class="result-qty" id="result-f-3-A">0</td>
+                                        <td class="result-qty" id="result-f-4-A">0</td>
+                                        <td class="result-qty" id="result-f-5-A">0</td>
+                                        <td class="result-qty" id="result-f-6-A">0</td>
+                                        <td class="result-qty" id="result-f-7-A">0</td>
+                                        <td class="result-qty" id="result-f-8-A">0</td>
+                                        <td class="result-qty" id="result-f-9-A">0</td>
+                                        <td class="result-qty" id="result-f-10-A">0</td>
+                                        <td class="result-qty" id="result-f-11-A">0</td>
                                     </tr>
                                 </table>
                             </div>
@@ -263,6 +242,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- <button data-target="#pdfModal-A" data-toggle="modal">PDF Modal</button> -->
 
 
         <div class="main-calc-wrap">
@@ -313,9 +294,7 @@
                         <div class="col-12 col-md-6 section-column section-column-left">
 
                             <div class="input-wrapper">
-
                                 <div class="input-group-wrap">
-
                                     <div class="input-group-title">
                                         <h5>Site dimensions</h5>
                                     </div>
@@ -345,76 +324,6 @@
                                     </div>
 
                                 </div>
-
-                                <div class="input-group-wrap">
-
-                                    <div class="input-group-title">
-                                        <h5>Tile dimensions</h5>
-                                    </div>
-                                    <div class="input-group">
-                                        <div class="single-input">
-                                            <div class="single-input-label-wrap">
-                                                <label for="tile-length-A">Length</label>
-                                                <span class="input-label-semicolon">:</span>
-                                            </div>
-                                            <div class="single-input-field-wrap">
-                                                <input class="required" type="number" name="tile-length-A"
-                                                    id="tile-length-A">
-                                                <a class="input-unit"><span>mm</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="single-input">
-                                            <div class="single-input-label-wrap">
-                                                <label for="tile-breadth-A">Breadth</label>
-                                                <span class="input-label-semicolon">:</span>
-                                            </div>
-                                            <div class="single-input-field-wrap">
-                                                <input class="required" type="number" name="tile-breadth-A"
-                                                    id="tile-breadth-A">
-                                                <a class="input-unit"><span>mm</span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p class="input-notes-italic">*Ensure dimensions are recorded in the same
-                                        orientation</p>
-
-                                </div>
-
-                                <div class="input-group-wrap">
-
-                                    <div class="input-group-title">
-                                        <h5>Elmich pedestal configuration</h5>
-                                    </div>
-                                    <div class="input-group">
-                                        <div class="single-input">
-
-                                            <div class="single-input-field-wrap pedstal-config-wrap">
-                                                <select name="pedestal-config-A" id="pedestal-config-A">
-                                                    <option value="1">Corners Only</option>
-                                                    <option value="2">Corners & Center</option>
-                                                    <option value="3">Corners, Center & Edges</option>
-                                                </select>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-
-                                </div>
-
-
-                            </div>
-
-
-
-
-                        </div>
-
-
-                        <div class="col-12 col-md-6 section-column section-column-right">
-
-                            <div class="input-wrapper">
 
                                 <div class="input-group-wrap">
 
@@ -460,6 +369,72 @@
                                     </div>
 
                                 </div>
+                            </div>
+
+
+
+
+                        </div>
+
+
+                        <div class="col-12 col-md-6 section-column section-column-right">
+
+                            <div class="input-wrapper">
+
+                                <div class="input-group-wrap">
+
+                                    <div class="input-group-title">
+                                        <h5>Tile dimensions</h5>
+                                    </div>
+                                    <div class="input-group">
+                                        <div class="single-input">
+                                            <div class="single-input-label-wrap">
+                                                <label for="tile-length-A">Length</label>
+                                                <span class="input-label-semicolon">:</span>
+                                            </div>
+                                            <div class="single-input-field-wrap">
+                                                <input class="required" type="number" name="tile-length-A"
+                                                    id="tile-length-A">
+                                                <a class="input-unit"><span>mm</span></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-input">
+                                            <div class="single-input-label-wrap">
+                                                <label for="tile-breadth-A">Breadth</label>
+                                                <span class="input-label-semicolon">:</span>
+                                            </div>
+                                            <div class="single-input-field-wrap">
+                                                <input class="required" type="number" name="tile-breadth-A"
+                                                    id="tile-breadth-A">
+                                                <a class="input-unit"><span>mm</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="input-notes-italic">*Ensure dimensions are recorded in the same
+                                        orientation</p>
+
+                                </div>
+
+                                <div class="input-group-wrap">
+
+                                    <div class="input-group-title">
+                                        <h5>Elmich pedestal configuration</h5>
+                                    </div>
+                                    <div class="input-group">
+                                        <div class="single-input no-padding-bottom">
+
+                                            <div class="single-input-field-wrap pedstal-config-wrap">
+                                                <select name="pedestal-config-A" id="pedestal-config-A">
+                                                    <option value="1">Corners Only</option>
+                                                    <option value="2">Corners & Center</option>
+                                                    <option value="3">Corners, Center & Edges</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>  
                             </div>
 
                             <div class="image-section" id="img-section-2A">
@@ -526,62 +501,6 @@
                                 <div class="input-group-wrap">
 
                                     <div class="input-group-title">
-                                        <h5>Pedestal spacing dimensions</h5>
-                                    </div>
-                                    <div class="input-group">
-                                        <div class="single-input">
-                                            <div class="single-input-label-wrap">
-                                                <label for="along-joist-B">Along joist</label>
-                                                <span class="input-label-semicolon">:</span>
-                                            </div>
-                                            <div class="single-input-field-wrap">
-                                                <input class="required" type="number" name="along-joist-B"
-                                                    id="along-joist-B">
-                                                <a class="input-unit"><span>mm</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="single-input">
-                                            <div class="single-input-label-wrap">
-                                                <label for="between-joist-B">Between joist</label>
-                                                <span class="input-label-semicolon">:</span>
-                                            </div>
-                                            <div class="single-input-field-wrap">
-                                                <input class="required" type="number" name="between-joist-B"
-                                                    id="between-joist-B">
-                                                <a class="input-unit"><span>mm</span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p class="input-notes-italic">*Ensure dimensions are recorded in the same
-                                        orientation</p>
-
-                                </div>
-
-                                <div class="input-group-wrap visibility-must-hidden">
-                                    <div class="input-group-title">
-                                        <h5>-------------------------------</h5>
-                                    </div>
-                                    <div class="input-group">
-                                        <div class="single-input">
-                                            <div class="single-input-field-wrap pedstal-config-wrap">
-                                                <select>
-
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-12 col-md-6 section-column section-column-right">
-
-                            <div class="input-wrapper">
-
-                                <div class="input-group-wrap">
-
-                                    <div class="input-group-title">
                                         <h5>Calculations</h5>
                                     </div>
                                     <div class="input-group">
@@ -619,141 +538,169 @@
                                                 <a class="input-unit"><span>no.</span></a>
                                             </div>
                                         </div>
-
-
                                     </div>
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="col-12 col-md-6 section-column section-column-right">
+                            <div class="input-wrapper">
+                                <div class="input-group-wrap">
+                                    <div class="input-group-title">
+                                        <h5>Pedestal spacing dimensions</h5>
+                                    </div>
+                                    <div class="input-group">
+                                        <div class="single-input">
+                                            <div class="single-input-label-wrap">
+                                                <label for="along-joist-B">Along joist</label>
+                                                <span class="input-label-semicolon">:</span>
+                                            </div>
+                                            <div class="single-input-field-wrap">
+                                                <input class="required" type="number" name="along-joist-B"
+                                                    id="along-joist-B">
+                                                <a class="input-unit"><span>mm</span></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-input">
+                                            <div class="single-input-label-wrap">
+                                                <label for="between-joist-B">Between joist</label>
+                                                <span class="input-label-semicolon">:</span>
+                                            </div>
+                                            <div class="single-input-field-wrap">
+                                                <input class="required" type="number" name="between-joist-B"
+                                                    id="between-joist-B">
+                                                <a class="input-unit"><span>mm</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="input-notes-italic">*Ensure dimensions are recorded in the same
+                                        orientation</p>
                                 </div>
                             </div>
 
                             <div class="image-section" id="img-section-2B">
-
                                 <div class="image-wrap">
                                     <img id="CornersCentre" src="assets/img/CornersOnly-Decking.png"
                                         alt="CornersCentre">
                                 </div>
-
-
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
 
                 <div class="section" id="section-3" data-name="3">
-
                     <div class="section-title">
                         <h3>Input height and slope values</h3>
                     </div>
                     <div class="section-content">
-                        <div class="col-12 col-md-6 section-column section-column-left">
-                            <div class="input-wrapper">
-                                <div class="input-group-wrap">
+                        <div class="result-section-content">
+                            <div class="col-12 col-md-6 section-column section-column-left">
+                                <div class="input-wrapper">
+                                    <div class="input-group-wrap">
 
-                                    <div class="input-group-title">
-                                        <h5>Elmich pedestals</h5>
-                                    </div>
-                                    <div class="input-group">
-                                        <div class="single-input">
-                                            <div class="single-input-label-wrap">
-                                                <label for="pedstal-total"><span>Total</span></label>
-                                                <span class="input-label-semicolon">:</span>
-                                            </div>
-                                            <div class="single-input-field-wrap">
-                                                <input readonly class="only-bottom-border" type="number"
-                                                    name="pedstal-total" id="pedstal-total">
-                                                <a class="input-unit"><span>no.</span></a>
-                                            </div>
+                                        <div class="input-group-title">
+                                            <h5>Elmich pedestals</h5>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div class="input-group-wrap">
-                                    <div class="input-group-title">
-                                        <h5>Height dimensions</h5>
-                                    </div>
-                                    <div class="input-group">
-                                        <div class="single-input">
-                                            <div class="single-input-label-wrap">
-                                                <label for="dimensions-short-height"><span>Shortest
-                                                        height</span></label>
-                                                <span class="input-label-semicolon">:</span>
-                                            </div>
-                                            <div class="single-input-field-wrap">
-                                                <input type="number" name="dimensions-short-height"
-                                                    id="dimensions-short-height">
-                                                <a class="input-unit"><span>mm</span></a>
-                                                <h6 class="input-note">Please input equal or more than 37mm</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="image-section" id="img-section-3">
-                                    <div class="image-wrap">
-                                        <img id="CornersCentre" src="assets/img/typical-details-A.jpg"
-                                            alt="CornersCentre">
-                                    </div>
-                                </div>
-
-                                <div class="input-group-wrap">
-
-                                    <div class="input-group-title">
-                                        <h5>Slope data</h5>
-                                    </div>
-                                    <div class="input-group">
-                                        <div class="single-input">
-                                            <div class="single-input-label-wrap">
-                                                <label for="slope-percentage">Slope percentage</label>
-                                                <span class="input-label-semicolon">:</span>
-                                            </div>
-                                            <div class="single-input-field-wrap">
-                                                <select name="slope-percentage" id="slope-percentage">
-                                                    <option selected value="0">0%</option>
-                                                    <option value="1">1%</option>
-                                                    <option value="2">2%</option>
-                                                    <option value="3">3%</option>
-                                                    <option value="4">4%</option>
-                                                    <option value="5">5%</option>
-                                                </select>
-
-                                            </div>
-                                        </div>
-                                        <div class="single-input">
-                                            <div class="single-input-label-wrap">
-                                                <label for="slope-direction">Slope direction</label>
-                                                <span class="input-label-semicolon">:</span>
-                                            </div>
-                                            <div class="single-input-field-wrap">
-                                                <select name="slope-direction" id="slope-direction">
-                                                    <option value="1">Length-wise</option>
-                                                    <option value="2">Breadth-wise</option>
-                                                </select>
-
+                                        <div class="input-group">
+                                            <div class="single-input">
+                                                <div class="single-input-label-wrap">
+                                                    <label for="pedstal-total"><span>Total</span></label>
+                                                    <span class="input-label-semicolon">:</span>
+                                                </div>
+                                                <div class="single-input-field-wrap">
+                                                    <input readonly class="only-bottom-border" type="number"
+                                                        name="pedstal-total" id="pedstal-total">
+                                                    <a class="input-unit"><span>no.</span></a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
+                                    
+
+                                    <div class="image-section" id="img-section-3">
+                                        <div class="image-wrap">
+                                            <img  src="assets/img/Section Detail for Paving.png" id="section-paving-img"
+                                                alt="Paving">
+                                                <img  src="assets/img/Section Detail for Decking.png" id="section-decking-img"
+                                                alt="Decking">
+                                        </div>
+                                    </div>
+
+                                    
+
 
                                 </div>
-
-
+                                
                             </div>
-                            <div class="action-btn-wrapper">
-                                <button class="btn-pdf action-btn" data-target="pdf">download pdf</button>
-                                <button class="btn-email action-btn" data-toggle="modal"
-                                    data-target="#send-email-modal">Email
-                                    PDF</button>
+
+
+                            <div class="col-12 col-md-6 section-column section-column-right">
+                                <div class="input-wrapper">
+                                    <div class="input-group-wrap">
+                                        <div class="input-group-title">
+                                            <h5>Height dimensions</h5>
+                                        </div>
+                                        <div class="input-group">
+                                            <div class="single-input">
+                                                <div class="single-input-label-wrap">
+                                                    <label for="dimensions-short-height"><span>Shortest
+                                                            height</span></label>
+                                                    <span class="input-label-semicolon">:</span>
+                                                </div>
+                                                <div class="single-input-field-wrap">
+                                                    <input type="number" name="dimensions-short-height"
+                                                        id="dimensions-short-height">
+                                                    <a class="input-unit"><span>mm</span></a>
+                                                    <h6 class="input-note">Please input equal or more than 37mm</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="input-group-wrap">
+                                        <div class="input-group-title">
+                                            <h5>Slope data</h5>
+                                        </div>
+                                        <div class="input-group">
+                                            <div class="single-input">
+                                                <div class="single-input-label-wrap">
+                                                    <label for="slope-percentage">Slope percentage</label>
+                                                    <span class="input-label-semicolon">:</span>
+                                                </div>
+                                                <div class="single-input-field-wrap">
+                                                    <select name="slope-percentage" id="slope-percentage">
+                                                        <option selected value="0">0%</option>
+                                                        <option value="1">1%</option>
+                                                        <option value="2">2%</option>
+                                                        <option value="3">3%</option>
+                                                        <option value="4">4%</option>
+                                                        <option value="5">5%</option>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                            <div class="single-input">
+                                                <div class="single-input-label-wrap">
+                                                    <label for="slope-direction">Slope direction</label>
+                                                    <span class="input-label-semicolon">:</span>
+                                                </div>
+                                                <div class="single-input-field-wrap">
+                                                    <select name="slope-direction" id="slope-direction">
+                                                        <option value="1">Length-wise</option>
+                                                        <option value="2">Breadth-wise</option>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                </div>
                             </div>
                         </div>
-
-
-                        <div class="col-12 col-md-6 section-column section-column-right">
-
-                            <div class="result-table-wrapper">
-
+                        <div class="result-table-wrapper">
                                 <div class="input-group-title">
                                     <h5>VersiJack<sup>®</sup> breakdown</h5>
                                 </div>
@@ -761,77 +708,65 @@
                                 <table id="result-table">
 
                                     <tr>
-                                        <th>Model</th>
-                                        <th>Height Range</th>
-                                        <th>Quantity</th>
+                                        <th>VersiJack<sup>®</sup> Model</th>
+                                        <td>F1</td>
+                                        <td>F2</td>
+                                        <td>F3</td>
+                                        <td>F4</td>
+                                        <td>F5</td>
+                                        <td>F6</td>
+                                        <td>F7</td>
+                                        <td>F8</td>
+                                        <td>F9</td>
+                                        <td>F10</td>
+                                        <td>F11</td>
                                     </tr>
 
                                     <tr>
-                                        <td>VersiJack<sup>®</sup> F1</td>
-                                        <td>37 - 50 mm</td>
+                                        <th>Height Range (mm)</th>
+                                        <td>37 - 50</td>
+                                        <td>50 - 74</td>
+                                        <td>74 - 117</td>
+                                        <td>117 - 201</td>
+                                        <td>196 - 281</td>
+                                        <td>356 - 524</td>
+                                        <td>277 - 446</td>
+                                        <td>437 - 690</td>
+                                        <td>596 - 934</td>
+                                        <td>516 - 768</td>
+                                        <td>675 - 1014</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Quantity</th>
                                         <td class="result-qty" id="result-f-1">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>VersiJack<sup>®</sup> F2</td>
-                                        <td>50 - 74 mm</td>
                                         <td class="result-qty" id="result-f-2">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>VersiJack<sup>®</sup> F3</td>
-                                        <td>74 - 117 mm</td>
                                         <td class="result-qty" id="result-f-3">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>VersiJack<sup>®</sup> F4</td>
-                                        <td>117 - 201 mm</td>
                                         <td class="result-qty" id="result-f-4">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>VersiJack<sup>®</sup> F5</td>
-                                        <td>196 - 281 mm</td>
                                         <td class="result-qty" id="result-f-5">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>VersiJack<sup>®</sup> F6</td>
-                                        <td>277 - 446 mm</td>
                                         <td class="result-qty" id="result-f-6">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>VersiJack<sup>®</sup> F7</td>
-                                        <td>356 - 524 mm</td>
                                         <td class="result-qty" id="result-f-7">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>VersiJack<sup>®</sup> F8</td>
-                                        <td>437 - 690 mm</td>
                                         <td class="result-qty" id="result-f-8">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>VersiJack<sup>®</sup> F9</td>
-                                        <td>516 - 768 mm</td>
                                         <td class="result-qty" id="result-f-9">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>VersiJack<sup>®</sup> F10</td>
-                                        <td>596 - 934 mm</td>
                                         <td class="result-qty" id="result-f-10">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>VersiJack<sup>®</sup> F11</td>
-                                        <td>675 - 1014 mm</td>
                                         <td class="result-qty" id="result-f-11">0</td>
                                     </tr>
                                 </table>
-
-
-                            </div>
+                                <div class="action-btn-wrapper">
+                                    <button class="btn-pdf action-btn" data-target="pdf">download pdf</button>
+                                    <button class="btn-email action-btn" data-toggle="modal"
+                                        data-target="#send-email-modal">Email
+                                        PDF</button>
+                                </div>
                         </div>
                     </div>
+
+                        
+
+                    
                 </div>
-
-
-
             </div>
+
             <div class="nav-buttons">
                 <button class="nav-btn nav-back" data-target="back">Back</button>
                 <button class="nav-btn nav-next" data-target="next">Next</button>
