@@ -157,8 +157,10 @@ function tabbedView() {
 
     if (route == "A") {
       $("#section-3 #section-paving-img").css({ opacity: "1" });
+      $("#section-3 #section-decking-img").css({ opacity: "0" });
     } else {
       $("#section-3 #section-decking-img").css({ opacity: "1" });
+      $("#section-3 #section-paving-img").css({ opacity: "0" });
     }
   });
 
@@ -215,6 +217,18 @@ function tabbedView() {
     } else {
       $(".nav-back").removeClass("inactive");
       $(".nav-btn").css("display", "inline-block");
+    }
+
+    if (index == 2) {
+      $(".nav-next").removeClass("inactive");
+      setTimeout(function () {
+        $(".nav-next").attr("data-target", "#send-email-modal");
+      }, 100);
+
+      $(".nav-next").text("DOWNLOAD PDF");
+    } else {
+      $(".nav-next").attr("data-target", "next");
+      $(".nav-next").text("NEXT");
     }
 
     $(`#indicator-${index + 1}`).addClass("active");
@@ -966,7 +980,7 @@ role="status">
     $("#mail-submit").append(spinner);
     let pdfData;
 
-    let element = document.getElementById("result-pdf");
+    let element = document.getElementById("result-pdf-A");
     let pdfWorker = html2pdf();
     pdfWorker
       .from(element)
