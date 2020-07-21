@@ -460,8 +460,7 @@ html {
   font-size: 14px;
   color: #fe5700;
   position: absolute;
-  bottom: 0;
-  margin-bottom: 0;
+  bottom: -30px;
   line-height: 12px;
 }
 
@@ -541,7 +540,7 @@ html {
 //===========================
 
 .input-group-wrap {
-  padding-bottom: 10px;
+  padding-bottom: 25px;
 }
 
 .input-group {
