@@ -545,6 +545,7 @@ html {
   position: absolute;
   bottom: 0;
   margin-bottom: 0;
+  line-height: 12px;
 }
 
 #section-1 .section-column {
