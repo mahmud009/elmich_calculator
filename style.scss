@@ -449,7 +449,7 @@ html {
   color: #fe5700;
   transform: translateY(105%);
   transition: all 0.3s ease;
-  font-style: italic;
+  font-style: italic !important;
 }
 
 .single-input-field-wrap.pedstal-config-wrap {
@@ -458,11 +458,11 @@ html {
 
 .input-notes-italic {
   font-style: italic;
-  font-size: 14px;
+  font-size: 12px;
   color: #fe5700;
   position: absolute;
   bottom: -30px;
-  line-height: 14px;
+  line-height: 12px;
 }
 
 // Customized Section-1 style
@@ -690,6 +690,8 @@ html {
     color: #5a5a5a;
     margin-top: 8px;
     font-style: italic;
+    color: #fe5700;
+    font-size: 12px;
   }
 }
 
