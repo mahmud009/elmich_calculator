@@ -726,7 +726,7 @@ html {
 
 #img-section-3 .image-wrap {
   position: relative;
-  height: 100px;
+  margin-top: 30px;
 }
 
 #img-section-3 .image-wrap img {
@@ -812,6 +812,12 @@ html {
   font-style: italic;
   color: #fe5700;
   font-size: 12px;
+}
+
+.note-wrapper p a {
+  color: #fe5700;
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 .result-qty {
