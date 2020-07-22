@@ -532,6 +532,7 @@ html {
           transform: translateY(105%);
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  font-style: italic;
 }
 
 .single-input-field-wrap.pedstal-config-wrap {
@@ -544,7 +545,7 @@ html {
   color: #fe5700;
   position: absolute;
   bottom: -30px;
-  line-height: 12px;
+  line-height: 14px;
 }
 
 #section-1 .section-column {
@@ -808,6 +809,7 @@ html {
 .note-wrapper p {
   color: #5a5a5a;
   margin-top: 8px;
+  font-style: italic;
 }
 
 .result-qty {

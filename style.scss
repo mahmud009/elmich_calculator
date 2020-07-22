@@ -449,6 +449,7 @@ html {
   color: #fe5700;
   transform: translateY(105%);
   transition: all 0.3s ease;
+  font-style: italic;
 }
 
 .single-input-field-wrap.pedstal-config-wrap {
@@ -461,7 +462,7 @@ html {
   color: #fe5700;
   position: absolute;
   bottom: -30px;
-  line-height: 12px;
+  line-height: 14px;
 }
 
 // Customized Section-1 style
@@ -688,6 +689,7 @@ html {
   p {
     color: #5a5a5a;
     margin-top: 8px;
+    font-style: italic;
   }
 }
 
