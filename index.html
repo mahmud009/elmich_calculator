@@ -13,12 +13,10 @@
         rel="stylesheet">
     <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="plugins/fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=1.0.3">
+    <link rel="stylesheet" href="style.css?v=1.0.4">
 </head>
 
 <body>
-
-
     <div class="container">        
         <!-- Email modal-->
         <div class="modal fade" id="send-email-modal" tabindex="-1" role="dialog"
@@ -631,14 +629,14 @@
                                             <h5>Height dimensions</h5>
                                         </div>
                                         <div class="input-group">
-                                            <div class="single-input">
+                                            <div class="single-input" id="short-height">
                                                 <div class="single-input-label-wrap">
                                                     <label for="dimensions-short-height"><span>Shortest
                                                             height</span></label>
                                                     <span class="input-label-semicolon">:</span>
                                                 </div>
                                                 <div class="single-input-field-wrap">
-                                                    <input type="number" name="dimensions-short-height"
+                                                    <input data-type="short-height" type="number" name="dimensions-short-height"
                                                         id="dimensions-short-height">
                                                     <a class="input-unit"><span>mm</span></a>
                                                     <h6 class="input-note">Please input equal or more than 37mm</h6>
@@ -764,7 +762,7 @@
     <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="plugins/html2pdf/html2pdf.js"></script>
     <script src="plugins/smtpjs/smtp.js"></script>
-    <script src="functions.js?v=1.0.2"></script>
+    <script src="functions.js?v=1.0.3"></script>
     <script src="main.js?v=1.0.2"></script>
 </body>
 

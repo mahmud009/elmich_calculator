@@ -17,14 +17,14 @@ function init() {
 
   // Section-3 default shortest height is 37mm
   $("#dimensions-short-height").val("");
-  $("#dimensions-short-height").on("change", function () {
+  $("#dimensions-short-height").on("change blur", function () {
     let value = $(this).val();
     if (value < 37) {
       $(this).addClass("not-validated");
-      $(this).siblings("h6").css({ color: "#d92027" });
+      $(this).siblings("h6").css({ color: "#d92027", opacity: "1" });
     } else {
       $(this).removeClass("not-validated");
-      $(this).siblings("h6").css({ color: "#fe5700" });
+      $(this).siblings("h6").css({ color: "#fe5700", opacity: "0" });
     }
   });
 
@@ -72,6 +72,7 @@ function validate(section) {
 
   for (field of requiredFields) {
     let value = $(field).val();
+
     if (!isEmpty(value)) {
       validationCount += 1;
       $(field).removeClass("not-validated");
@@ -85,10 +86,6 @@ function validate(section) {
 
   return filedCount == validationCount;
 }
-
-// $("button[data-target=next]").on("click", function () {
-//   validate($("#section-2A"));
-// });
 
 //xxxxxxxxxxxxxxx-- End of function --xxxxxxxxxxxxxxxxxxxxx
 
