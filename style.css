@@ -62,6 +62,12 @@ html {
   padding-bottom: 50px;
   position: relative;
   z-index: 99;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .nav-buttons .nav-btn {
@@ -1091,5 +1097,11 @@ html {
 #short-height .input-note {
   font-style: normal !important;
   opacity: 0;
+}
+
+@media (max-width: 768px) {
+  #img-section-3 .image-wrap img {
+    margin-top: -70px;
+  }
 }
 /*# sourceMappingURL=style.css.map */

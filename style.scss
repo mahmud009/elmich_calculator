@@ -87,6 +87,8 @@ html {
   padding-bottom: 50px;
   position: relative;
   z-index: 99;
+  display: flex;
+  justify-content: center;
 
   .nav-btn {
     color: white;
@@ -965,4 +967,18 @@ html {
     font-style: normal !important;
     opacity: 0;
   }
+}
+
+#img-section-3{
+
+  @include tablet{
+
+    .image-wrap{
+      img{
+        margin-top : -70px;
+      }
+    }
+  }
+
+
 }
